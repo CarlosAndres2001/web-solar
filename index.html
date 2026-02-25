@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="loader">
+
+        <img src="combos/fr.png" class="loader-bg">
+    
+        <img src="combos/piernasinfondo.png" class="loader-chicken">
+    
+    </div>
 
     <header id="navbar">
         <div class="nav-container">
@@ -34,7 +41,7 @@
     </section>
 
     <section id="history" style="min-height: 100vh; background: white; padding: 100px 20px; text-align: center; color: black;">
-        <h2>UN POCO DE NUESTRA HISTORIA</h2>
+        <h2>QUIENES SOMOS</h2>
         <div class="history-grid">
             <div class="history-text">
                 <p>
@@ -125,6 +132,44 @@
                 navbar.classList.remove("nav-active");
             }
         };
+    </script>
+    <script>
+        const loader = document.getElementById("loader");
+    
+        // 1. Efecto de Scroll (Navbar y Logo)
+        window.onscroll = function() {
+            const logo = document.getElementById("main-logo");
+            const navbar = document.getElementById("navbar");
+            
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                logo.classList.add("logo-fixed");
+                navbar.classList.add("nav-active");
+            } else {
+                logo.classList.remove("logo-fixed");
+                navbar.classList.remove("nav-active");
+            }
+        };
+    
+        // 2. Ocultar loader al cargar la página
+        window.addEventListener("load", function() {
+            // Le damos un pequeño delay de 1 seg para que el cliente vea el efecto
+            setTimeout(() => {
+                loader.classList.add("hide");
+            }, 1000);
+        });
+    
+        // 3. (Opcional) Mostrar loader al hacer clic en links 
+        // Nota: Como es una Single Page, esto puede ser molesto, 
+        // pero si lo quieres, aquí está corregido:
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function() {
+                loader.classList.remove("hide");
+                // Se oculta solo después de medio segundo para simular carga
+                setTimeout(() => {
+                    loader.classList.add("hide");
+                }, 600);
+            });
+        });
     </script>
 </body>
 </html>

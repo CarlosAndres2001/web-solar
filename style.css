@@ -1,4 +1,7 @@
-* {
+/* ##########################################
+   1. BASES Y RESET
+   ########################################## */
+   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,7 +17,9 @@ body {
     color: white;
 }
 
-/* NAVBAR (HEADER) */
+/* ##########################################
+   2. NAVBAR (CONTENEDORES)
+   ########################################## */
 #navbar {
     position: fixed;
     top: 0;
@@ -27,15 +32,6 @@ body {
     background: transparent;
 }
 
-.nav-active {
-    background: #fdfdfdf6 !important; /* Un poco más sólido para que el logo resalte */
-    color: black !important;
-    height: 70px !important; /* Se achica un poco el header */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.685);
-}
-.nav-active .nav-links a {
-    color: black !important; /* Color cuando el header se vuelve blanco al bajar */
-}
 .nav-container {
     width: 100%;
     max-width: 1200px;
@@ -46,6 +42,9 @@ body {
     padding: 0 30px;
 }
 
+/* ##########################################
+   3. LINKS DE NAVEGACIÓN
+   ########################################## */
 .nav-links a {
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -59,7 +58,23 @@ body {
     color: #ffcc00;
 }
 
-/* LOGO - ESTADO INICIAL (CENTRO) */
+/* ##########################################
+   4. ESTADOS ACTIVOS (SCROLL)
+   ########################################## */
+.nav-active {
+    background: #fdfdfdf6 !important; /* Un poco más sólido para que el logo resalte */
+    color: black !important;
+    height: 70px !important; /* Se achica un poco el header */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.685);
+}
+
+.nav-active .nav-links a {
+    color: black !important; /* Color cuando el header se vuelve blanco al bajar */
+}
+
+/* ##########################################
+   5. LOGO (ESTADO INICIAL Y FIJO)
+   ########################################## */
 #main-logo {
     position: fixed; /* Fixed para que la transición sea suave al scrolear */
     left: 50%;
@@ -71,7 +86,6 @@ body {
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
 }
 
-/* LOGO - ESTADO FIJO (IZQUIERDA, COLGANDO E INCLINADO) */
 .logo-fixed {
     left: 8% !important; /* Ajusta qué tan a la izquierda lo quieres */
     top: -5px !important; /* Lo subimos un poquito para que el cuelgue sea más notorio */
@@ -80,8 +94,11 @@ body {
     filter: drop-shadow(5px 10px 15px rgba(0,0,0,0.6)) !important;
     z-index: 2000; /* Asegura que esté por encima de todo */
 }
-/* HERO SECTION */
-.hero {
+
+/* ##########################################
+   6. HERO SECTION
+   ########################################## */
+   .hero {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -96,206 +113,75 @@ body {
     text-shadow: 6px 6px 0px #000;
 }
 
-/* POLLOS DE FONDO */
+/* ##########################################
+   7. ELEMENTOS FLOTANTES (POLLOS)
+   ########################################## */
 .chicken {
     position: absolute;
     width: 350px;
     z-index: -1;
     animation: float 6s infinite ease-in-out;
 }
-.c1 { top: 15%; left: 5%; transform: rotate(15deg); }
-.c2 { top: 25%; right: 5%; transform: rotate(-15deg); animation-delay: 1s; }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
+.c1 { 
+    top: 15%; 
+    left: 5%; 
+    transform: rotate(15deg); 
 }
 
-#history h2 {
+.c2 { 
+    top: 25%; 
+    right: 5%; 
+    transform: rotate(-15deg); 
+    animation-delay: 1s; 
+}
+
+/* ##########################################
+   8. ANIMACIONES
+   ########################################## */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-20px) rotate(5deg); 
+    }
+}
+
+/* ##########################################
+   9. SECCION HISTORY (TÍTULO Y CONTENEDOR)
+   ########################################## */
+   #history h2 {
     font-family: 'Gotham', 'NarrowBold';
-    font-weight: 750;          /* Bien negrita */
-    font-size: 3rem;           /* Tamaño grande */
-    color: #e61e25;            /* El rojo de la marca */
-    text-transform: uppercase; /* Todo en mayúsculas */
-    letter-spacing: -4px;      /* Letras un poco más juntas para ese estilo */
+    font-weight: 750;
+    font-size: 3rem;
+    color: #e61e25;
+    text-transform: uppercase;
+    letter-spacing: -4px;
     line-height: 1.1;
     text-align: center;
     margin-bottom: 30px;
-    /* Sombra opcional si quieres que resalte más */
     text-shadow: 2px 2px 0px rgba(0,0,0,0.1); 
 }
 
-
-/* --- FOOTER STYLE --- */
-.main-footer {
-    background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
-    color: white;
-    padding: 50px 0 20px;
-    font-family: 'Roboto', sans-serif;
-    border-top: 5px solid #e61e25; /* Línea roja superior para separar */
-}
-
-.footer-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.1fr 1.1fr 1.1fr; /* Distribución de columnas */
-    gap: 40px;
-    padding: 0 30px;
-}
-
-.footer-box h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
-    color: #ffcc00; /* Dorado para títulos, muy familiar */
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
-/* Columna About */
-.footer-logo {
-    width: 190px;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
-}
-
-.about p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #ccc;
-    font-style: italic;
-}
-
-/* Links */
-.links ul {
-    list-style: none;
-}
-
-.links ul li {
-    margin-bottom: 10px;
-}
-
-.links ul li a {
-    color: #ccc;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.links ul li a:hover {
-    color: white;
-    padding-left: 5px;
-}
-
-/* Contacto */
-.contact p {
-    margin-bottom: 15px;
-    color: #ccc;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Copyright */
-.footer-bottom {
-    text-align: center;
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-    font-size: 0.8rem;
-    color: #666;
-}
-/* Contenedor de los iconos */
-.social-icons-wrapper {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-/* Estilo base de cada icono */
-.social-icons-wrapper .icon {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background: #333; /* Fondo oscuro inicial */
-    border-radius: 50%;
-    display: flex;
+.history {
     justify-content: center;
     align-items: center;
-    color: white;
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* EFECTO TOOLTIP (El nombre que aparece arriba) */
-.social-icons-wrapper .icon::before {
-    content: attr(data-name); /* Toma el nombre del atributo data-name del HTML */
-    position: absolute;
-    top: -45px;
-    background: #ffcc00; /* Color amarillo del Solaar */
-    color: black;
-    padding: 5px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-family: 'Oswald', sans-serif;
-    font-weight: bold;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-}
-
-/* Triangulito del tooltip */
-.social-icons-wrapper .icon::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #ffcc00;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-/* Hover: Mostrar nombre y triangulito */
-.social-icons-wrapper .icon:hover::before,
-.social-icons-wrapper .icon:hover::after {
-    opacity: 1;
-    top: -55px; /* Sube un poquito al aparecer */
-}
-.social-icons-wrapper .icon:hover::after {
-    top: -15px;
-}
-
-/* Colores de marca al pasar el mouse */
-.icon.whatsapp:hover { background: #25D366; }
-.icon.instagram:hover { background: #E1306C; }
-.icon.facebook:hover { background: #1877F2; }
-.icon.tiktok:hover { background: #000000; color: #ff0050; border: 1px solid #00f2ea; }
-.icon.linkedin:hover { background: #0077B5; }
-
-/* Animación de rebote al hover */
-.social-icons-wrapper .icon:hover {
-    transform: translateY(-5px);
-}
-
-.history{
- justify-content: center;
- align-items: center ;
-}
 .history-grid {
     padding-left: 20%;
     display: grid;
-    grid-template-columns: 1.1fr 1fr; /* Dos columnas iguales */
+    grid-template-columns: 1.1fr 1fr; /* Dos columnas */
     gap: 50px;
     max-width: 1300px;
     align-items: center;
-    margin-top: 20px; /* Ajuste por el SVG arqueado */
+    margin-top: 20px;
 }
 
-/* Estilo del Texto */
+/* ##########################################
+   10. TEXTOS E INDICADORES (BADGE)
+   ########################################## */
 .history-text {
     text-align: left;
     font-family: 'Roboto', sans-serif;
@@ -326,11 +212,13 @@ body {
     box-shadow: 3px 3px 0px #000;
 }
 
-/* Estilo de la Imagen y Marco */
+/* ##########################################
+   11. IMAGEN Y MARCO (EFECTO POLAROID)
+   ########################################## */
 .history-image {
     display: flex;
     justify-content: center;
-    perspective: 1000px; /* Para efecto 3D si quisiéramos */
+    perspective: 1000px;
 }
 
 .img-frame {
@@ -339,7 +227,7 @@ body {
     background: white;
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     border: 1px solid #ddd;
-    transform: rotate(3deg); /* Foto un poco inclinada */
+    transform: rotate(3deg);
     transition: all 0.5s ease;
     animation: revealImage 1.2s ease-out forwards;
 }
@@ -348,7 +236,7 @@ body {
     max-width: 100%;
     height: auto;
     display: block;
-    filter: sepia(20%); /* Toque ligeramente antiguo */
+    filter: sepia(20%);
 }
 
 .img-frame:hover {
@@ -356,7 +244,9 @@ body {
     box-shadow: 0 30px 50px rgba(0,0,0,0.3);
 }
 
-/* Animación de entrada */
+/* ##########################################
+   12. ANIMACIÓN DE REVELACIÓN
+   ########################################## */
 @keyframes revealImage {
     0% {
         opacity: 0;
@@ -368,61 +258,193 @@ body {
     }
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
+/* ##########################################
+   13. FOOTER (ESTRUCTURA GENERAL)
+   ########################################## */
+   .main-footer {
+    background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+    color: white;
+    padding: 50px 0 20px;
+    font-family: 'Roboto', sans-serif;
+    border-top: 5px solid #e61e25; /* Línea roja de separación */
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1.1fr 1.1fr; /* 4 Columnas */
+    gap: 40px;
+    padding: 0 30px;
+}
+
+.footer-box h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: #ffcc00;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* ##########################################
+   14. COLUMNAS DEL FOOTER (ABOUT & LINKS)
+   ########################################## */
+.footer-logo {
+    width: 190px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+}
+
+.about p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #ccc;
+    font-style: italic;
+}
+
+.links ul {
+    list-style: none;
+}
+
+.links ul li {
+    margin-bottom: 10px;
+}
+
+.links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.links ul li a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+/* ##########################################
+   15. CONTACTO Y COPYRIGHT
+   ########################################## */
+.contact p {
+    margin-bottom: 15px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ##########################################
+   16. REDES SOCIALES (ICONOS Y TOOLTIPS)
+   ########################################## */
+.social-icons-wrapper {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-icons-wrapper .icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Tooltip (Nombre arriba) */
+.social-icons-wrapper .icon::before {
+    content: attr(data-name);
+    position: absolute;
+    top: -45px;
+    background: #ffcc00;
+    color: black;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Triangulito del Tooltip */
+.social-icons-wrapper .icon::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ffcc00;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* ##########################################
+   17. HOVER EFFECTS (REDES SOCIALES)
+   ########################################## */
+.social-icons-wrapper .icon:hover::before,
+.social-icons-wrapper .icon:hover::after {
+    opacity: 1;
+}
+
+.social-icons-wrapper .icon:hover::before {
+    top: -55px;
+}
+
+.social-icons-wrapper .icon:hover::after {
+    top: -15px;
+}
+
+.social-icons-wrapper .icon:hover {
+    transform: translateY(-5px);
+}
+
+/* Colores de Marca al Hover */
+.icon.whatsapp:hover { background: #25D366; }
+.icon.instagram:hover { background: #E1306C; }
+.icon.facebook:hover { background: #1877F2; }
+.icon.tiktok:hover { background: #000000; color: #ff0050; border: 1px solid #00f2ea; }
+.icon.linkedin:hover { background: #0077B5; }
+
+
+
+
+/* ##########################################
+   18. RESPONSIVE (EL TOQUE FINAL)
+   ########################################## */
+
+/* Tablets y Laptops chicas */
+@media (max-width: 1024px) {
     .history-grid {
-        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        padding-left: 5%;
+        grid-template-columns: 1fr; /* Pasa a una sola columna */
         text-align: center;
     }
-
-    .history-text {
-        text-align: center;
-        order: 2; /* Texto abajo de la foto en móvil */
-    }
-
-    .history-image {
-        order: 1; /* Foto arriba en móvil */
-        margin-bottom: 30px;
-    }
-    
-    .history-section {
-        padding: 50px 20px;
-    }
+    .history-text { text-align: center; }
+    .footer-container { grid-template-columns: 1fr 1fr; }
 }
 
-/* Responsive móvil */
+/* Celulares (iPhone, Android, etc.) */
 @media (max-width: 768px) {
-    .social-icons-wrapper {
-        justify-content: center;
-    }
-}
-/* --- FOOTER RESPONSIVE --- */
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr; /* Una columna en móvil */
-        text-align: center;
-    }
-
-    .footer-box h3 {
-        margin-top: 20px;
-    }
-
-    .contact p {
-        justify-content: center;
-    }
-}
-/* Ajuste responsive para que el texto no se vea gigante en el celu */
-@media (max-width: 768px) {
-    #menu h2 {
-        font-size: 2.5rem;
-        padding: 0 20px;
-    }
-}
-
-/* --- RESPONSIVE CORREGIDO (EL QUE FUNCIONA) --- */
-
-@media (max-width: 768px) {
-    /* Logo en el centro al cargar */
+    /* Logo Reset para Celu */
     #main-logo {
         width: 250px !important;
         left: 50% !important;
@@ -430,40 +452,200 @@ body {
         transform: translate(-50%, -50%) !important;
     }
 
-    /* EL EFECTO: Aquí estaba el error. Reseteamos el transform para que no se pierda */
+    /* Logo cuando scrolleas en celu */
     .logo-fixed {
-        left: 10px !important; /* Lo mandamos a la izquierda */
-        top: -5px !important;  /* Lo hacemos colgar */
-        
-        /* IMPORTANTE: Quitamos el translate(-50%) que lo mantenía al centro */
-        transform: translate(0, 0) rotate(-10deg) !important; 
-        
-        width: 100px !important; /* Achicamos */
+        width: 100px !important;
+        left: 10px !important;
+        top: 0 !important;
+        transform: translate(0, 0) rotate(-8deg) !important;
     }
 
-    /* Acomodamos los links para que no los tape el logo */
+    /* Navbar en celu */
+    #navbar { height: 60px !important; }
+    .nav-container { justify-content: flex-end; padding: 0 15px; }
+    .nav-links a { font-size: 0.8rem; margin-left: 10px; }
+
+    /* Títulos y Hero */
+    .hero-title { font-size: 3rem; }
+    #history h2 { font-size: 2.2rem; letter-spacing: -1px; }
+    .history-text p { font-size: 1.1rem; }
+
+    /* Footer en celu */
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .social-icons-wrapper { justify-content: center; }
+    .contact p { justify-content: center; }
+}
+
+/* Pantallas súper pequeñas */
+@media (max-width: 400px) {
+    .nav-links a { font-size: 0.7rem; }
+    .logo-fixed { width: 85px !important; }
+}
+
+/* ##########################################
+   18. RESPONSIVE FINAL (CON CARRUSEL Y NAV FIJO)
+   ########################################## */
+
+   @media (max-width: 768px) {
+    /* NAVBAR SIEMPRE FIJO Y VISIBLE */
+    #navbar {
+        position: fixed !important;
+        top: 0 !important;
+        height: 70px !important;
+        background: white !important; /* Fondo blanco para que se lean las letras negras */
+        display: flex !important;
+        align-items: center !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 3000;
+    }
+
+    /* LOGO: SIEMPRE EN EL NAVBAR */
+    #main-logo {
+        width: 100px !important;
+        left: 15px !important;
+        top: 35px !important; /* Ajustado para que quede centrado en los 70px del nav */
+        transform: translateY(-50%) rotate(-5deg) !important; 
+        position: fixed !important; 
+        z-index: 3001 !important;
+        filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2)) !important;
+    }
+
+    /* LINKS EN NEGRO */
     .nav-container {
         justify-content: flex-end !important;
-        padding-right: 10px !important;
+        padding-right: 15px !important;
     }
 
     .nav-links a {
+        color: black !important;
         font-size: 0.75rem !important;
         margin-left: 10px !important;
-        white-space: nowrap;
+        font-weight: bold;
     }
 
-    #navbar {
-        height: 60px !important;
+    /* CARRUSEL DE POLLOS (ANIMACIÓN HERO) */
+    .hero {
+        height: 80vh;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Animamos los pollos para que se turnen apareciendo */
+    .chicken {
+        display: block !important;
+        width: 280px !important;
+        left: 50% !important;
+        top: 55% !important;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        opacity: 0;
+    }
+
+    /* El pollo 1 aparece primero */
+    .c1 {
+        animation: carruselPollos 6s infinite;
+    }
+
+    /* El pollo 2 aparece después (delay de 3s) */
+    .c2 {
+        animation: carruselPollos 6s infinite 3s;
+    }
+
+    /* SECCIÓN HISTORIA AJUSTE */
+    .history-grid {
+        padding-left: 0 !important;
+        grid-template-columns: 1fr !important;
+        margin-top: 50px;
+    }
+
+    #history h2 {
+        font-size: 1.8rem !important;
+        letter-spacing: -1px !important;
+        padding-top: 20px;
     }
 }
 
-/* Para pantallas muy chicas */
+/* ##########################################
+   19. ANIMACIÓN DEL CARRUSEL DE IMÁGENES
+   ########################################## */
+@keyframes carruselPollos {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    45% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    55% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
 @media (max-width: 380px) {
     .nav-links a {
         font-size: 0.65rem !important;
+        margin-left: 6px !important;
     }
-    .logo-fixed {
-        width: 80px !important;
+    #main-logo {
+        width: 85px !important;
     }
+}
+/* ##########################################
+   20. LOADER (CORREGIDO)
+   ########################################## */
+   #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a; /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* El máximo posible */
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    /* QUITAMOS el opacity 0 de aquí para que nazca VISIBLE */
+}
+
+/* Imagen de fondo del loader */
+.loader-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* Un poco transparente para que se vea el pollo */
+}
+
+/* La piernita que gira */
+.loader-chicken {
+    position: relative;
+    width: 150px;
+    z-index: 2;
+    animation: spinChicken 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+/* Clase para ocultarlo */
+#loader.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes spinChicken {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
