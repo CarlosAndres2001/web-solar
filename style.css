@@ -603,46 +603,59 @@ body {
         width: 85px !important;
     }
 }
+
 /* ##########################################
-   20. LOADER (CORREGIDO)
+   20. LOADER (PROTECCIÓN ANTI-DISTORSIÓN)
    ########################################## */
    #loader {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #1a1a1a; /* Fondo oscuro */
+    width: 100vw; /* Asegura el ancho exacto del visor */
+    height: 100vh;
+    background-color: #1a1a1a;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999; /* El máximo posible */
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-    /* QUITAMOS el opacity 0 de aquí para que nazca VISIBLE */
+    z-index: 100000;
+    
+    /* ESTO ES LO QUE ARREGLA EL BORDE DERECHO */
+    overflow: hidden !important; 
+    touch-action: none; /* Evita que el usuario lo mueva con el dedo */
 }
 
-/* Imagen de fondo del loader */
 .loader-bg {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
-    opacity: 0.3; /* Un poco transparente para que se vea el pollo */
+    opacity: 0.2;
+    pointer-events: none;
 }
 
-/* La piernita que gira */
 .loader-chicken {
     position: relative;
-    width: 150px;
+    /* En celulares NO puede medir 450px. Usamos 'vw' y un 'max-width' */
+    width: 60vw !important; 
+    max-width: 300px !important; 
+    height: auto;
     z-index: 2;
     animation: spinChicken 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 
-/* Clase para ocultarlo */
 #loader.hide {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+}
+
+/* ##########################################
+   EXTRA: SEGURO CONTRA DESPLAZAMIENTO LATERAL
+   ########################################## */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important; /* MATA EL BORDE DERECHO EN TODA LA WEB */
+    position: relative;
 }
 
 @keyframes spinChicken {
