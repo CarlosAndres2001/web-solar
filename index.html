@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollo El Solar | ¡El sabor único!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="nav-container">
+            <div id="logo-destination"></div> 
+            
+            <nav class="nav-links">
+                <a href="#inicio">INICIO</a>
+                <a href="#history">QUIENES SOMOS</a>
+                <a href="#contacto">BOLSA DE TRABAJO</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <img src="combos/LOGO SIN TEXTO ABAJO.png" id="main-logo" alt="Logo Pollo El Solaar">
+            
+        </div>
+
+        <img src="items/CUARTO CRUZADO - PECHO + PIERNA.png" class="chicken c1" alt="pollo">
+        <img src="items/CHICHARRON PREMIUM.png" class="chicken c2" alt="pollo">
+    </section>
+
+    <section id="history" style="min-height: 100vh; background: white; padding: 100px 20px; text-align: center; color: black;">
+        <h2>UN POCO DE NUESTRA HISTORIA</h2>
+        <div class="history-grid">
+            <div class="history-text">
+                <p>
+                    Hace <strong>40 años</strong>, los esposos Juan Stroebel y Laura Parada, cargados de ilusiones y esperanzas, 
+                    iniciaron un reducido negocio el <strong>4 de octubre de 1983</strong>. 
+                </p>
+                <p>
+                    Desde entonces el negocio y la cantidad de fanáticos del buen sabor, no han parado de crecer. 
+                    La locura “Solar” Los clientes abarrotaban nuestro pequeño local donde sólo cabían 60 personas sentadas.
+                </p>
+                <div class="history-badge">Desde 1983</div>
+            </div>
+    
+            <div class="history-image">
+                <div class="img-frame">
+                    <img src="combos/jsp.jpeg" alt="Fundadores Pollo El Solaar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" style="min-height: 100vh; background: white; padding: 100px 20px; text-align: center; color: black;">
+        <h2>DONDE NOS PUEDES ENCONTRAR</h2>
+    </section>
+
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-box about">
+                <img src="combos/logo_white.png" alt="Logo Pollo El Solaar" class="footer-logo">
+            </div>
+    
+            <div class="footer-box links">
+                <h3>NAVEGACIÓN</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#menu">Nuestra Historia</a></li>
+                    <li><a href="#bolsa">Bolsa de Trabajo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-box contact">
+                <h3>CONTACTO</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Principal, Santa Cruz, Bolivia</p>
+                <p><i class="fas fa-phone"></i> +591 700 00000</p>
+                <p><i class="fas fa-envelope"></i> info@polloelsolaar.com</p>
+            </div>
+
+            <div class="footer-box social">
+                <h3>NUESTRAS REDES SOCIALES</h3>
+                <div class="social-icons-wrapper">
+                    <a href="https://wa.link/njstgf" target="_blank" class="icon whatsapp" data-name="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/polloelsolar" target="_blank" class="icon instagram" data-name="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/polloelsolar" target="_blank" class="icon facebook" data-name="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@papasolar?_r=1&_t=ZS-94DYe4v2OJR" target="_blank" class="icon tiktok" data-name="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/polloelsolar/" target="_blank" class="icon linkedin" data-name="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pollo El Solar - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            const logo = document.getElementById("main-logo");
+            const navbar = document.getElementById("navbar");
+            
+            // Detecta el scroll
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                logo.classList.add("logo-fixed");
+                navbar.classList.add("nav-active");
+            } else {
+                logo.classList.remove("logo-fixed");
+                navbar.classList.remove("nav-active");
+            }
+        };
+    </script>
+</body>
+</html>

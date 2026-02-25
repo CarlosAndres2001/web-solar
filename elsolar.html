@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Solar | Pollo Frito Tradicional</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec3713",
+                        "background-light": "#fcf9f8",
+                        "background-dark": "#221310",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1b100d] dark:text-[#fcf9f8] antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-[#e7d3cf] dark:border-[#3d2a26]">
+<div class="max-w-[1280px] mx-auto flex items-center justify-between px-10 py-4">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+</div>
+<img src="combos/logo.png" alt="logo" style="width: 80px;">
+<h2 class="text-2xl font-black tracking-tight dark:text-white">Sabroso Hasta Los Huesos</h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#menu">Menú</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#about">Nosotros</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#location">Sucursales</a>
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                    Ver Menú
+                </button>
+</nav>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto overflow-hidden">
+<!-- Hero Section -->
+<section class="p-4 @container">
+<div class="relative min-h-[580px] flex flex-col items-center justify-center rounded-2xl overflow-hidden bg-cover bg-center" data-alt="Golden crispy fried chicken platter on a rustic table" style='background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA77uX_OPIsW4hJ-ISMiNGcq5l__u5M9tWa2yjif_9MxO2jvCWKTFZzZVxoUed_Z-F9P1JqbepdbS5Be-XDX_tz5tXpTNGb-UI9QEaW4cYEIoryRx3rpXA5NCQpGYrZPMqQBFbnN0roGS9rbILpkjZ4AkIG_7txGvZu3k6eprtKrn94_Sj9tfJDkxD0YtdCI3htkr5C_zAmWjm3d8JRENlEahBog1Xf5X4qokVSqZw-KV8eEdQGXm-KNvpmtwWedwIh_RERlw2V7hY");'>
+<div class="z-10 text-center px-6 max-w-2xl">
+<h1 class="text-white text-5xl md:text-7xl font-black leading-[1.1] mb-6 tracking-tight">
+                        Sabor que Enamora
+                    </h1>
+<p class="text-white/90 text-lg md:text-xl font-medium mb-10 leading-relaxed">
+                        El mejor pollo frito crujiente hecho con tradición, pasión y la receta secreta de la casa.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-white h-14 px-10 rounded-xl text-lg font-bold hover:scale-105 transition-transform">
+                            Ver Menú Completo
+                        </button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 h-14 px-10 rounded-xl text-lg font-bold hover:bg-white/20 transition-all">
+                            Nuestras Ofertas
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Specialties Section Header -->
+<section class="pt-20 px-10" id="menu">
+<div class="flex items-end justify-between border-b border-[#e7d3cf] dark:border-[#3d2a26] pb-6 mb-10">
+<div>
+<span class="text-primary font-bold uppercase tracking-widest text-xs mb-2 block">Selección del Chef</span>
+<h2 class="text-4xl font-black tracking-tight">Nuestras Especialidades</h2>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 group">
+                    Explorar todo <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Image Grid / Menu -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Item 1 -->
+<div class="group flex flex-col gap-4">
+<div class="overflow-hidden rounded-xl aspect-[16/10]">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-110 transition-transform duration-500" data-alt="Large bucket of crispy fried chicken with sides" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACTTbLteLTubOPBaAXFxrGSMF8gGkI-xiXQoYEj7okQ0vSDLtCjxjbUC--Ef9f0qXgxtex64sNtc81d1xk9DCBvUgJDyhReg1jh1xyxmjlHEig5JB7YmJ8w7KItz9D0A5TNHEkIJ1bOO1lP6lG5LhS4j_72IMIoSXbfD7_-fRht8Xwxn2OgN7G0BPGPCfFSwJtGB2OafU69qK260kFW1UQ1XcEHIeu0968ICw77rgz2IdYXsagJfCL97g9_NUU3i7W7C7__mO-UPc");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Pollo Crujiente Familiar</h3>
+<span class="text-primary font-black text-lg">$15.99</span>
+</div>
+<p class="text-[#9a594c] dark:text-[#c4a49e] text-sm leading-relaxed">8 piezas de pollo dorado con nuestra receta secreta, acompañadas de ensalada de col y papas.</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group flex flex-col gap-4">
+<div class="overflow-hidden rounded-xl aspect-[16/10]">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-110 transition-transform duration-500" data-alt="Spicy buffalo wings with blue cheese dip" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCG0eTmkA2T33dKBRwyqQxNWGjyfzF7NTxi5zL1PH-fOonvPi0Ys-7AHG43f9DbSG9O3sKsoBd63dqE-GKBE3UUvaAxl9KOGVx5ET_l0OLlopDx2FgEIo1ZoeW3Boq8G6L61RXXjA5Jagis5ia47gLzw0v3StysKGrb82SOeMPcJeHWJeWatbQaWl5REbdqPzybJYkIi5053pPFYZe0HQDVKZHTppLU-uTcGWtyHR-Z2LyX1k_WZqxW8_BckmU8DPyeNnLsWtQwhfI");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Alitas Picantes</h3>
+<span class="text-primary font-black text-lg">$10.50</span>
+</div>
+<p class="text-[#9a594c] dark:text-[#c4a49e] text-sm leading-relaxed">12 alitas bañadas en nuestra salsa especial habanero-miel, servidas con dip ranchero.</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group flex flex-col gap-4">
+<div class="overflow-hidden rounded-xl aspect-[16/10]">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-110 transition-transform duration-500" data-alt="Fried chicken burger combo with fries" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFw2GLXjQNwVTBb7AdYVdCG9Xx3Pol0BxzRhyP2JQa3yn5Obts7lkmbwPKUH4rAOJrDzdediKZ2qF4SGla8KKQb0xAkNiT_q8aFCETM7Ci9PbHaAtZI6qnl1yEuV4LsV4Zs0YfS9M7wAj6IimYiDyjnQIgAcu6Xs9a5g8659N3JQWr-7WX0xpFS-3XxmMCYeeEZlBejuZefpwKckFrvfN3it6aQdDG3GujtskfZEVQGMxfUoDoCekS53Dfct4tPtSe8QhUzIT9cUk");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Combo El Solar</h3>
+<span class="text-primary font-black text-lg">$8.99</span>
+</div>
+<p class="text-[#9a594c] dark:text-[#c4a49e] text-sm leading-relaxed">Sándwich de pollo extra crujiente, papas fritas sazonadas y bebida de la casa.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Section / About Us -->
+<section class="py-24 px-10" id="about">
+<div class="bg-[#f3e9e7] dark:bg-[#2d1b18] rounded-3xl p-12 lg:p-20 flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-1/2 flex flex-col gap-8">
+<div class="space-y-4">
+<h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                            Más de 20 años <br/> <span class="text-primary underline decoration-primary/30 underline-offset-8">perfeccionando el crujido</span>
+</h2>
+<p class="text-lg text-[#1b100d]/80 dark:text-[#fcf9f8]/80 leading-relaxed">
+                            En El Solar, nos dedicamos a servir el pollo frito más delicioso de la ciudad. No es solo comida rápida, es una experiencia artesanal utilizando ingredientes frescos de granjas locales y una receta que ha pasado de generación en generación.
+                        </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="flex flex-col gap-3 p-6 bg-background-light dark:bg-background-dark rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl">check_circle</span>
+<div>
+<h3 class="font-bold">Calidad</h3>
+<p class="text-xs text-[#9a594c] dark:text-[#c4a49e]">Ingredientes siempre frescos del día</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-6 bg-background-light dark:bg-background-dark rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl">favorite</span>
+<div>
+<h3 class="font-bold">Tradición</h3>
+<p class="text-xs text-[#9a594c] dark:text-[#c4a49e]">Receta original de la familia</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-6 bg-background-light dark:bg-background-dark rounded-2xl shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl">restaurant</span>
+<div>
+<h3 class="font-bold">Sabor</h3>
+<p class="text-xs text-[#9a594c] dark:text-[#c4a49e]">Inigualable en cada bocado</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 w-full h-[400px] rounded-2xl overflow-hidden relative shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+<div class="w-full h-full bg-center bg-cover" data-alt="Modern interior of El Solar restaurant" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_ELkUdZuWGnuGMNDBS7oAOWXIHVi8UMwpg2S8GHRsgJO5mof_0VwlQ1hOtcOj0Dtc-4nX6V0ra6_K-I7z2WdjQSy5XqMWsme-vrX_cD87FQK38LE-NUQIAn7bFsC4OqGlQu3qNvcDcICi4jdHYYRseB8PVLaP2Yzz3R-GX6V-W-WTzO4NQ81ABG6HkLsJ1CRSMJEU3MK4asLTrzHMfL3Sf7pyyT5TquNqjnZd5KMjo7_8ft4stT1YAqs3MU-yKVgeo1iP0lGyslE");'></div>
+</div>
+</div>
+</section>
+<!-- Location & Contact Section -->
+<section class="pb-24 px-10" id="location">
+<div class="grid lg:grid-cols-2 gap-12">
+<div class="flex flex-col justify-center">
+<h2 class="text-4xl font-black mb-6">Visítanos</h2>
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="bg-primary/10 p-3 rounded-full h-fit">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Dirección Principal</h4>
+<p class="text-[#9a594c] dark:text-[#c4a49e]">Av. Tradiciones 123, Barrio del Sabor<br/>Ciudad de México, CP 01000</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-primary/10 p-3 rounded-full h-fit">
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Horario de Atención</h4>
+<p class="text-[#9a594c] dark:text-[#c4a49e]">Lun - Jue: 11:00 AM - 9:00 PM<br/>Vie - Dom: 11:00 AM - 11:00 PM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-primary/10 p-3 rounded-full h-fit">
+<span class="material-symbols-outlined text-primary">call</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Pedidos &amp; Reservas</h4>
+<p class="text-[#9a594c] dark:text-[#c4a49e]">+52 (55) 1234-5678<br/>hola@elsolar.com</p>
+</div>
+</div>
+</div>
+</div>
+<div class="h-[450px] rounded-3xl overflow-hidden border border-[#e7d3cf] dark:border-[#3d2a26] shadow-sm relative grayscale hover:grayscale-0 transition-all duration-700">
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="w-full h-full bg-center bg-cover" data-alt="Stylized map showing El Solar location" data-location="Mexico City" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdUKdbvR2_cUU49X3N5BxAdMsSXKQCNrcwVYaiTnmiwloSkE_knF7mZCv3MbJSF5j2SIT9Kiqv18Bt0BvwKFL86kqFlnfLXedIZssQVbVhljS7Z65DhXRBLQ50k3cr8lp3v579E3bsyl5cHpqIswYGltuHh0s_oNmEVZxDdHFOsOiGjZotTRdgkLkeGLMFNuk1esNua-ogmS5YACCE_rqw7N6skm1up05NnfyKIkEYLK4rVJZCF2cLc3xoMSVaMsJu67vRqgCO1xI");'></div>
+<div class="absolute bottom-6 right-6 bg-white dark:bg-background-dark p-4 rounded-xl shadow-xl flex items-center gap-3">
+<span class="flex h-3 w-3 rounded-full bg-green-500"></span>
+<p class="font-bold text-sm">¡Estamos Abiertos!</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#1b100d] text-[#fcf9f8] pt-20 pb-10">
+<div class="max-w-[1280px] mx-auto px-10">
+<div class="grid md:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="text-primary size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-black">El Solar</h2>
+</div>
+<p class="text-white/60 text-sm leading-relaxed mb-6">
+                        Sirviendo la mejor tradición frita desde 2004. Nuestra pasión es el sabor crujiente.
+                    </p>
+<div class="flex gap-4">
+<a class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<i class="material-symbols-outlined text-sm">public</i>
+</a>
+<a class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<i class="material-symbols-outlined text-sm">thumb_up</i>
+</a>
+<a class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<i class="material-symbols-outlined text-sm">photo_camera</i>
+</a>
+</div>
+</div>
+<div class="col-span-1">
+<h4 class="font-bold mb-6 text-white">Menú</h4>
+<ul class="space-y-4 text-white/60 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Combos Familiares</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Alitas &amp; Tenders</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Burgers &amp; Sándwiches</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Guarniciones</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-bold mb-6 text-white">Compañía</h4>
+<ul class="space-y-4 text-white/60 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Sobre Nosotros</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Franquicias</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Trabaja con Nosotros</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contacto</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-bold mb-6 text-white">Suscríbete</h4>
+<p class="text-white/60 text-sm mb-4">Recibe ofertas exclusivas y novedades.</p>
+<div class="flex gap-2">
+<input class="bg-white/5 border-none rounded-lg flex-1 text-sm focus:ring-primary" placeholder="Tu email" type="email"/>
+<button class="bg-primary px-4 py-2 rounded-lg font-bold">Unirme</button>
+</div>
+</div>
+</div>
+<div class="pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-white/40 text-xs">© 2024 El Solar Restaurante. Todos los derechos reservados.</p>
+<div class="flex gap-8 text-white/40 text-xs">
+<a class="hover:text-white" href="#">Privacidad</a>
+<a class="hover:text-white" href="#">Términos</a>
+<a class="hover:text-white" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
