@@ -425,8 +425,6 @@ body {
 .icon.linkedin:hover { background: #0077B5; }
 
 
-
-
 /* ##########################################
    18. RESPONSIVE (EL TOQUE FINAL)
    ########################################## */
@@ -662,3 +660,54 @@ html, body {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
+.map-section {
+    background: white;
+}
+.map-container {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* El mapa base */
+.map-path {
+    transition: fill 0.3s ease;
+    cursor: pointer;
+}
+
+/* EL HOVER AMARILLO */
+.map-path:hover {
+    fill: #ffcc00 !important;
+}
+
+/* Estilo de los Labels (Cajas negras) */
+.label-box {
+    position: absolute;
+    background: rgb(38, 36, 36);
+    color: white;
+    padding: 8px 15px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none; /* Clave para no bloquear el mouse */
+    
+    /* OCULTOS POR DEFECTO */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* MOSTRAR SOLO AL HACER HOVER */
+.map-container:has(#BO:hover) .bo-label {
+    opacity: 1;
+}
+
+.map-container:has(#PY:hover) .py-label {
+    opacity: 1;
+}
+
+/* Tus posiciones */
+.bo-label { top: 40%; left: 35%; }
+.py-label { top: 65%; left: 65%; }
