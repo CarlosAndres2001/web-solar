@@ -500,8 +500,8 @@ body {
     /* LOGO: SIEMPRE EN EL NAVBAR */
     #main-logo {
         width: 100px !important;
-        left: 15px !important;
-        top: 35px !important; /* Ajustado para que quede centrado en los 70px del nav */
+        left: 37% !important;
+        top: 35px !important;
         transform: translateY(-50%) rotate(-5deg) !important; 
         position: fixed !important; 
         z-index: 3001 !important;
@@ -510,7 +510,7 @@ body {
 
     /* LINKS EN NEGRO */
     .nav-container {
-        justify-content: flex-end !important;
+        justify-content: center !important;
         padding-right: 15px !important;
     }
 
@@ -519,6 +519,7 @@ body {
         font-size: 0.75rem !important;
         margin-left: 10px !important;
         font-weight: bold;
+        display: none;
     }
 
     /* CARRUSEL DE POLLOS (ANIMACIÓN HERO) */
