@@ -124,15 +124,15 @@ body {
 }
 
 .c1 { 
-    top: 15%; 
+    top: 8%; 
     left: 5%; 
     transform: rotate(15deg); 
 }
 
 .c2 { 
-    top: 25%; 
+    top: 6%; 
     right: 5%; 
-    transform: rotate(-15deg); 
+    transform: rotate(-19deg); 
     animation-delay: 1s; 
 }
 
@@ -152,12 +152,12 @@ body {
    9. SECCION HISTORY (TÍTULO Y CONTENEDOR)
    ########################################## */
    #history h2 {
-    font-family: 'Gotham', 'NarrowBold';
-    font-weight: 750;
+    font-family: 'Oswald', sans-serif; /* Usando tu fuente */
+    font-weight: 400;
     font-size: 3rem;
-    color: #e61e25;
+    color: #d32f2f;
     text-transform: uppercase;
-    letter-spacing: -4px;
+    letter-spacing: -1px;
     line-height: 1.1;
     text-align: center;
     margin-bottom: 30px;
@@ -184,7 +184,7 @@ body {
    ########################################## */
 .history-text {
     text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .history-text p {
@@ -661,53 +661,140 @@ html, body {
     to { transform: rotate(360deg); }
 }
 
+/* --- ESTILO DE TEXTOS Y TÍTULOS --- */
 .map-section {
-    background: white;
+    padding: 60px 20px;
+    background: #ffffff;
+    text-align: center;
+    font-family: 'Oswald', sans-serif; /* Usando tu fuente */
 }
+
+.globe-icon {
+    font-size: 30px;
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.map-section h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.map-section h2 span {
+    color: #d32f2f; /* El rojo de la palabra ENCONTRAR */
+}
+
+.map-section p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+}
+
+/* --- CONTENEDOR Y MAPA --- */
 .map-container {
     position: relative;
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 800px; /* Un poco más grande el mapa */
+    margin: 50px auto;
 }
 
-/* El mapa base */
+.svg-map {
+    width: 500px;
+    height: auto;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.08));
+}
+
 .map-path {
     transition: fill 0.3s ease;
-    cursor: pointer;
 }
 
-/* EL HOVER AMARILLO */
 .map-path:hover {
     fill: #ffcc00 !important;
 }
 
-/* Estilo de los Labels (Cajas negras) */
-.label-box {
+/* --- CARDS MÁS GRANDES --- */
+.info-card {
     position: absolute;
-    background: rgb(38, 36, 36);
-    color: white;
-    padding: 8px 15px;
-    font-family: 'Oswald', sans-serif;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    pointer-events: none; /* Clave para no bloquear el mouse */
+    background: white;
+    padding: 25px; /* Más aire interno */
+    border-radius: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+    width: 300px; /* Aumentamos el ancho */
+    text-align: left;
+    z-index: 100;
     
-    /* OCULTOS POR DEFECTO */
     opacity: 0;
-    transition: opacity 0.3s ease;
+    visibility: hidden;
+    transform: translate(-50%, 0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* MOSTRAR SOLO AL HACER HOVER */
-.map-container:has(#BO:hover) .bo-label {
+/* Mostrar cards al hover */
+.map-container:has(#BO:hover) .bo-card,
+.map-container:has(#PY:hover) .py-card {
     opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -20px);
 }
 
-.map-container:has(#PY:hover) .py-label {
-    opacity: 1;
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-/* Tus posiciones */
-.bo-label { top: 40%; left: 35%; }
-.py-label { top: 65%; left: 65%; }
+.country-code {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.country-name {
+    font-size: 26px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+.card-locations {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* BOTÓN PRO */
+.visit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #d32f2f;
+    color: white !important;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.visit-btn:hover {
+    background: #b71c1c;
+    transform: scale(1.03);
+}
+
+/* POSICIONES (Ajustalas según tu SVG) */
+.bo-card { top: 20%; left: 35%; }
+.py-card { top: 55%; left: 70%; }
+
+@media (max-width: 768px) {
+    .svg-map{
+        width: 400px;
+    }
+}
