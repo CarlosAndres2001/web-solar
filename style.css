@@ -795,6 +795,6 @@ html, body {
 
 @media (max-width: 768px) {
     .svg-map{
-        width: 400px;
+        width: 350px;
     }
 }
