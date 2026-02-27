@@ -8,8 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:ital,wght@1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+
     <div id="loader">
 
         <img src="combos/fr.png" class="loader-bg">
@@ -23,9 +25,18 @@
             <div id="logo-destination"></div> 
             
             <nav class="nav-links">
-                <a href="#inicio">INICIO</a>
-                <a href="#history">QUIENES SOMOS</a>
-                <a href="#contacto">BOLSA DE TRABAJO</a>
+                <a href="#inicio">
+                    <i data-lucide="home"></i>
+                    <span>INICIO</span>
+                </a>
+                <a href="#history">
+                    <i data-lucide="users"></i>
+                    <span>QUIENES SOMOS</span>
+                </a>
+                <a href="#mapita">
+                    <i data-lucide="map-pin"></i>
+                    <span>¿DONDE NOS PUEDES ENCONTRAR?</span>
+                </a>
             </nav>
         </div>
     </header>
@@ -36,12 +47,12 @@
             
         </div>
 
-        <img src="items/CUARTO CRUZADO - PECHO + PIERNA.png" class="chicken c1" alt="pollo">
-        <img src="items/CHICHARRON PREMIUM.png" class="chicken c2" alt="pollo">
+        <img src="items/hamburguesasinpapa.png"  class="chicken c1" alt="pollo">
+        <img src="items/cuartocontraala.png" class="chicken c2" alt="pollo">
     </section>
 
-    <section id="history" style="min-height: 100vh; background: white; padding: 100px 20px; text-align: center; color: black;">
-        <h2>QUIENES SOMOS</h2>
+    <section id="history" style="min-height: 100vh; background-image: url('combos/fw.png'); box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.466); background-size: cover; background-position: center; padding: 100px 20px; text-align: center; color: black;">
+        <h2>¿QUIENES SOMOS?</h2>
         <div class="history-grid">
             <div class="history-text">
                 <p>
@@ -69,7 +80,6 @@
             <h2>¿DÓNDE NOS PUEDES <span>ENCONTRAR?</span></h2>
             <p>Selecciona tu país para descubrir nuestros locales más cercanos</p>
         </div>
-        
         <div class="map-container">
             <svg viewBox="580 560 120 120" class="svg-map">
                 <a href="index_bo.html">
@@ -118,9 +128,9 @@
     
             <div class="footer-box contact">
                 <h3>CONTACTO</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Av. Principal, Santa Cruz, Bolivia</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Cañoto 581, Santa Cruz, Bolivia</p>
                 <p><i class="fas fa-phone"></i> +591 700 00000</p>
-                <p><i class="fas fa-envelope"></i> info@polloelsolaar.com</p>
+                <p><i class="fas fa-envelope"></i> info@polloelsolar.com</p>
             </div>
 
             <div class="footer-box social">
@@ -144,7 +154,7 @@
                 </div>
             </div>
         </div>
-    
+        <br>
         <div class="footer-bottom">
             <p>&copy; 2026 Pollo El Solar - Todos los derechos reservados.</p>
         </div>
@@ -231,5 +241,9 @@
         });
     </script>
 
+    <script>
+    // Esto renderiza los iconos automáticamente
+    lucide.createIcons();
+    </script>
 </body>
 </html>
