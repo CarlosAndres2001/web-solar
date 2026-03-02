@@ -622,24 +622,45 @@ font-family: 'Roboto', sans-serif;
         position: fixed !important;
         top: 0 !important;
         height: 70px !important;
-        background: white !important; /* Fondo blanco para que se lean las letras negras */
+        background: transparent !important; /* Empieza invisible */
+        /*background: white !important; /* Fondo blanco para que se lean las letras negras */
         display: flex !important;
         align-items: center !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0);
         z-index: 3000;
     }
-
-    /* LOGO: SIEMPRE EN EL NAVBAR */
+    /* LOGO POSICIÓN INICIAL: Grande y al centro */
     #main-logo {
-        width: 100px !important;
-        left: 37% !important;
-        top: 35px !important;
-        transform: translateY(-50%) rotate(-5deg) !important; 
-        position: fixed !important; 
+        width: 350px !important;
+        left: 50% !important;
+        top: 25% !important;
+        transform: translate(-50%, -50%) rotate(0deg) !important;
+        position: fixed !important;
         z-index: 3001 !important;
-        filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2)) !important;
+        transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
     }
 
+    /* LOGO CUANDO HACES SCROLL: Viaja a la esquina del navbar */
+    #main-logo.logo-fixed {
+        width: 100px !important;
+        left: 35% !important;
+        top: 5px !important;
+        transform: translate(0, 0) rotate(-8deg) !important;
+    }
+
+    /* Ocultar links de texto arriba en celu para no amontonar */
+    .nav-links { display: none !important; }
+
+    /* Ajuste de pollos para que no tapen el logo inicial */
+    .chicken {
+        width: 220px !important;
+        top: 80% !important;
+    }
+    /* NAVBAR CUANDO BAJAS: Se vuelve blanco */
+    #navbar.nav-active {
+        background: white !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    }
     /* LINKS EN NEGRO */
     .nav-container {
         justify-content: center !important;
@@ -656,7 +677,7 @@ font-family: 'Roboto', sans-serif;
 
     /* CARRUSEL DE POLLOS (ANIMACIÓN HERO) */
     .hero {
-        height: 80vh;
+        height: 90vh;
         overflow: hidden;
         position: relative;
         display: flex;
@@ -669,7 +690,7 @@ font-family: 'Roboto', sans-serif;
         display: block !important;
         width: 280px !important;
         left: 50% !important;
-        top: 55% !important;
+        top: 65% !important;
         transform: translate(-50%, -50%);
         position: absolute;
         opacity: 0;
