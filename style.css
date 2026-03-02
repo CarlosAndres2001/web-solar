@@ -400,28 +400,26 @@ a, button, [role="button"] {
 }
 
 /* ##########################################
-   13. FOOTER (ESTRUCTURA GENERAL)
-   ########################################## */
-   .main-footer {
-    background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
-    color: white;
-    padding: 50px 0 20px;
-    font-family: 'Roboto', sans-serif;
-    border-top: 5px solid #e61e25; /* Línea roja de separación */
+13. FOOTER (ESTRUCTURA GENERAL)
+########################################## */
+.main-footer {
+background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+padding: 50px 0 10px;
+font-family: 'Roboto', sans-serif;
 }
 
 .footer-container {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.1fr 1.1fr 1.1fr; /* 4 Columnas */
+    grid-template-columns: 1fr 1fr 1.2fr 1.1fr; /* 4 Columnas */
     gap: 40px;
-    padding: 0 30px;
+    padding: 0 50px;
 }
 
 .footer-box h3 {
     font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #ffcc00;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -431,17 +429,11 @@ a, button, [role="button"] {
    14. COLUMNAS DEL FOOTER (ABOUT & LINKS)
    ########################################## */
 .footer-logo {
-    width: 190px;
+    width: 160px;
     margin-bottom: 15px;
     filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
 }
 
-.about p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #ccc;
-    font-style: italic;
-}
 
 .links ul {
     list-style: none;
@@ -478,7 +470,7 @@ a, button, [role="button"] {
     margin-top: 50px;
     padding-top: 20px;
     border-top: 1px solid #333;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #666;
 }
 
@@ -610,7 +602,7 @@ a, button, [role="button"] {
     .history-text p { font-size: 1.1rem; }
 
     /* Footer en celu */
-    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .footer-container { grid-template-columns: 1fr !important; text-align: center !important; padding: 0 20px !important; }
     .social-icons-wrapper { justify-content: center; }
     .contact p { justify-content: center; }
 }
