@@ -58,8 +58,8 @@ a, button, [role="button"] {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.1rem;
-    margin-left: 30px;
+    font-size: 0.8rem;
+    margin-left: 10px;
     transition: 0.3s;
 }
 
@@ -602,7 +602,7 @@ a, button, [role="button"] {
     /* Navbar en celu */
     #navbar { height: 60px !important; }
     .nav-container { justify-content: flex-end; padding: 0 15px; }
-    .nav-links a { font-size: 0.8rem; margin-left: 10px; }
+    .nav-links a { font-size: 0.4rem; margin-left: 10px; }
 
     /* Títulos y Hero */
     .hero-title { font-size: 3rem; }
@@ -1014,4 +1014,40 @@ html, body {
 
     /* Espacio para que el contenido no quede debajo */
     body { padding-bottom: 1px;}
+
+    .nav-link {
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 1;
+    }
+
+    /* ESTADO ACTIVO: Se convierte en el botón circular rojo */
+    .nav-link.active {
+        color: #fff !important;
+        transform: translateY(-20px); /* Sube el botón */
+    }
+
+    /* Creamos el círculo rojo con un pseudo-elemento para no romper el SVG */
+    .nav-link.active::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: #ce1212;
+        border-radius: 50%;
+        z-index: -1;
+        box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+        border: 4px solid #fff;
+    }
+
+    /* Ajuste para el texto cuando está activo */
+    .nav-link.active span {
+        display: none;
+        color: #ce1212; /* Texto rojo abajo del círculo o blanco dentro */
+        font-weight: bold;
+        margin-top: 35px; /* Baja el texto para que no pise el círculo */
+    }
 }
