@@ -17,6 +17,15 @@ body {
     color: white;
 }
 
+body {
+  /* Asegúrate de que el link termine en .png */
+  cursor: url('combos/pierna.png') 16 16, auto !important;
+}
+
+/* Es vital aplicarlo también a los links y botones */
+a, button, [role="button"] {
+  cursor: url('combos/pierna.png') 16 16, pointer !important;
+}
 /* ##########################################
    2. NAVBAR (CONTENEDORES)
    ########################################## */
@@ -171,7 +180,7 @@ body {
 }
 
 .history-grid {
-    padding-left: 20%;
+    padding-left: 10%;
     display: grid;
     grid-template-columns: 1.1fr 1fr; /* Dos columnas */
     gap: 50px;
@@ -214,50 +223,180 @@ body {
     box-shadow: 3px 3px 0px #000;
 }
 
-/* ##########################################
-   11. IMAGEN Y MARCO (EFECTO POLAROID)
-   ########################################## */
-.history-image {
-    display: flex;
-    justify-content: center;
-    perspective: 1000px;
+/* Ajuste del Grid para que respire mejor */
+.history-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.5fr;
+    gap: 60px;
+    max-width: 1300px;
+    margin: 40px auto;
+    align-items: center;
+    padding: 0 20px;
 }
 
-.img-frame {
+/* Contenedor de las fotos en modo collage */
+.history-photos-container {
     position: relative;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.685);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    height: 450px; /* Ajusta según necesites */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Marco estilo Polaroid mejorado */
+.img-frame {
+    position: absolute;
+    padding: 12px 12px 35px 12px; /* Espacio abajo para el texto */
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     border: 1px solid #ddd;
-    transform: rotate(3deg);
-    transition: all 0.5s ease;
-    animation: revealImage 1.2s ease-out forwards;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 250px;
 }
 
 .img-frame img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
     display: block;
-    filter: sepia(20%);
+    filter: sepia(30%);
 }
 
+/* Texto pequeño debajo de la foto estilo Polaroid */
+.img-frame span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Posicionamiento del Collage */
+.photo-1 { 
+    transform: rotate(-8deg); 
+    z-index: 2; 
+    left: 0;
+    animation: entranceLeft 1s ease-out;
+}
+
+.photo-2 { 
+    transform: rotate(5deg); 
+    z-index: 3; 
+    top: 50px;
+    animation: entranceBottom 1.2s ease-out;
+}
+
+.photo-3 { 
+    transform: rotate(-3deg); 
+    z-index: 1; 
+    right: 0;
+    top: 150px;
+    animation: entranceRight 1.4s ease-out;
+}
+
+/* Hover: La foto se endereza y resalta */
 .img-frame:hover {
-    transform: rotate(0deg) scale(1.05);
-    box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+    transform: rotate(0deg) scale(1.15) translateY(-20px);
+    z-index: 10;
+    box-shadow: 0 40px 60px rgba(0,0,0,0.4);
+    filter: none;
+}
+
+.img-frame:hover img {
+    filter: sepia(0%);
+}
+
+/* Animaciones de entrada */
+@keyframes entranceLeft {
+    from { opacity: 0; transform: translateX(-100px) rotate(-20deg); }
+    to { opacity: 1; transform: translateX(0) rotate(-8deg); }
+}
+
+@keyframes entranceBottom {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(50px) rotate(5deg); }
+}
+
+@keyframes entranceRight {
+    from { opacity: 0; transform: translateX(100px) rotate(20deg); }
+    to { opacity: 1; transform: translateX(0) rotate(-3deg); }
+}
+
+/* Animación para el texto y el badge */
+.history-text {
+    animation: fadeIn 1.5s ease-in;
+}
+
+.history-badge:hover {
+    animation: shake 0.5s infinite;
+    cursor: pointer;
+}
+
+@keyframes shake {
+    0% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* ##########################################
-   12. ANIMACIÓN DE REVELACIÓN
+   12. ANIMACIONES Y RESPONSIVE
    ########################################## */
-@keyframes revealImage {
-    0% {
-        opacity: 0;
-        transform: translateX(100px) rotate(10deg);
+@keyframes shake {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+@keyframes entranceLeft {
+    from { opacity: 0; transform: translateX(-100px) rotate(-20deg); }
+    to { opacity: 1; transform: translateX(0) rotate(-10deg); }
+}
+
+@keyframes entranceBottom {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(-50%) rotate(5deg); }
+}
+
+@keyframes entranceRight {
+    from { opacity: 0; transform: translateX(100px) rotate(20deg); }
+    to { opacity: 1; transform: translateX(0) rotate(-5deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+}
+
+/* RESPONSIVO PARA MÓVILES */
+@media (max-width: 992px) {
+    .history-grid { grid-template-columns: 1fr; text-align: center; }
+    .history-text { text-align: center; margin-bottom: 40px; }
+    #history h2 { font-size: 2.5rem; }
+    .history-photos-container { height: 400px; }
+    .img-frame { width: 200px; }
+}
+
+@media (max-width: 600px) {
+    .history-photos-container {
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
     }
-    100% {
-        opacity: 1;
-        transform: translateX(0) rotate(3deg);
+    .img-frame {
+        position: relative; /* Ya no flotan una encima de otra */
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: rotate(0deg) !important;
+        margin: 0 auto;
+        width: 80%;
     }
+    .img-frame img { height: 200px; }
 }
 
 /* ##########################################
