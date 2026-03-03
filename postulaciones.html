@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pollo El Solar | ¡El sabor único!</title>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:ital,wght@1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/lucide@latest"></script>
+    </head>
+    <body>
+    <style>
+        /* ##########################################
+        2. NAVBAR (CONTENEDORES)
+        ########################################## */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* ##########################################
+        3. LINKS DE NAVEGACIÓN
+        ########################################## */
+        .nav-links a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        /* ##########################################
+        4. ESTADOS ACTIVOS (SCROLL)
+        ########################################## */
+        .nav {
+            background: #fc0606f6 !important; /* Un poco más sólido para que el logo resalte */
+            color: black !important;
+            height: 70px !important; /* Se achica un poco el header */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.685);
+        }
+
+        .nav .nav-links a {
+            color: black !important; /* Color cuando el header se vuelve blanco al bajar */
+        }
+        #main-logo {
+            width: 200px !important;
+            left:5% !important;
+            top: 20% !important;
+            transform: translate(-50%, -30%) rotate(0deg) !important;
+            position: fixed !important;
+            z-index: 3001 !important;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        }
+    </style> 
+   
+    <header id="navbar">
+        <div class="nav-container">
+
+            <div class="logo-fixed"> <img src="combos/LOGO SIN TEXTO ABAJO.png" id ="main-logo" alt="Logo Pollo El Solaar"></div> 
+
+            <nav class="nav-links">
+                <a href="index.html">
+                    <i data-lucide="home"></i>
+                    <span>INICIO</span>
+                </a>
+                <a href="index.html#history">
+                    <i data-lucide="users"></i>
+                    <span>QUIENES SOMOS</span>
+                </a>
+                <a href="index.html#mapita">
+                    <i data-lucide="map-pin"></i>
+                    <span>¿DONDE NOS PUEDES ENCONTRAR?</span>
+                </a>
+                <a href="franquisias.html">
+                    <i data-lucide="briefcase"></i>
+                    <span>FRANQUICIAS</span>
+                </a>
+                <a href="proveedores.html">
+                    <i data-lucide="phone"></i>
+                    <span>PROVEEDORES</span>
+                </a>
+                <a href="postulaciones.html">
+                    <i data-lucide="briefcase"></i>
+                    <span>BOLSA DE TRABAJO</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="form-franquisias"style="min-height: 90vh; background-image: url('combos/fw.png'); box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.466); background-size: fill; background-position: center; padding:10px 0px; text-align: center; color: black;">
+
+    </div>
+
+    <footer id="footer" class="main-footer">
+        <div class="footer-container">
+            <div class="footer-box about">
+                <img src="combos/logo_white.png" alt="Logo Pollo El Solaar" class="footer-logo">
+            </div>
+    
+            <div class="footer-box links">
+                <h3>NAVEGACIÓN</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#menu">¿Quienes Somos?</a></li>
+                    <li><a href="#menu">Donde nos puedes encontrar</a></li>
+                    <li><a href="#bolsa">Bolsa de Trabajo</a></li>
+                    <li><a href="#contacto">Franquisias</a></li>
+                    <li><a href="#contacto">Proveedores</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-box contact">
+                <h3>CONTACTO</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Cañoto 581, Santa Cruz, Bolivia</p>
+                <p><i class="fas fa-phone"></i> +591 700 00000</p>
+                <p><i class="fas fa-envelope"></i> info@polloelsolar.com</p>
+            </div>
+
+            <div class="footer-box social">
+                <h3>NUESTRAS REDES SOCIALES</h3>
+                <div class="social-icons-wrapper">
+                    <a href="https://wa.link/njstgf" target="_blank" class="icon whatsapp" data-name="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/polloelsolar" target="_blank" class="icon instagram" data-name="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/polloelsolar" target="_blank" class="icon facebook" data-name="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@papasolar?_r=1&_t=ZS-94DYe4v2OJR" target="_blank" class="icon tiktok" data-name="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/polloelsolar/" target="_blank" class="icon linkedin" data-name="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pollo El Solar - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-250415973388062']", "https://form.jotform.com/")</script>       
+    <script src="" async defer></script>
+    <script>lucide.createIcons();</script>
+    </body>
+</html>

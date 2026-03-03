@@ -58,9 +58,11 @@ a, button, [role="button"] {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin-left: 10px;
     transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
 }
 
 .nav-links a:hover {
