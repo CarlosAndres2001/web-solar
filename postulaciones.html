@@ -75,6 +75,52 @@
             z-index: 3001 !important;
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
         }
+        @media (max-width: 768px) {
+            #navbar {
+                position: fixed !important;
+                top: 0 !important;
+                height: 70px !important;
+                background: rgb(255, 255, 255) !important; /* Empieza invisible */
+                /*background: white !important; /* Fondo blanco para que se lean las letras negras */
+                display: flex !important;
+                align-items: center !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0);
+                z-index: 3000;
+            }
+            /* LOGO POSICIÓN INICIAL: Grande y al centro */
+            #main-logo {
+                width: 350px !important;
+                left: 50% !important;
+                top: 25% !important;
+                transform: translate(-50%, -50%) rotate(0deg) !important;
+                position: fixed !important;
+                z-index: 3001 !important;
+                transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            }
+        
+            /* LOGO CUANDO HACES SCROLL: Viaja a la esquina del navbar */
+            #main-logo.logo-fixed {
+                width: 100px !important;
+                left: 35% !important;
+                top: 5px !important;
+                transform: translate(0, 0) rotate(-8deg) !important;
+            }
+        
+            /* Ocultar links de texto arriba en celu para no amontonar */
+            .nav-links { display: none !important; }
+        
+            /* NAVBAR CUANDO BAJAS: Se vuelve blanco */
+            #navbar.nav-active {
+                background: rgb(253, 253, 253) !important;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+            }
+            /* LINKS EN NEGRO */
+            .nav-container {
+                justify-content: center !important;
+                padding-right: 15px !important;
+            }
+    
+        }
     </style> 
    
     <header id="navbar">
@@ -166,6 +212,82 @@
             <p>&copy; 2026 Pollo El Solar - Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <nav class="bottom-nav">
+        <a href="index.html#inicio" class="nav-link">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>Inicio</span>
+        </a>
+        <a href="index.html#mapita" class="nav-link">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Encontranos</span>
+        </a>
+        <a href="#footer" class="nav-link">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span>Info</span>
+        </a>
+        <a href="javascript:void(0)" class="nav-link" id="options-trigger">
+            <div class="hamburger-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line class="line-top" x1="3" y1="6" x2="21" y2="6"></line>
+                    <line class="line-mid" x1="3" y1="12" x2="21" y2="12"></line>
+                    <line class="line-bot" x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+            <span>Opciones</span>
+        </a>
+    
+        <ul class="options-menu" id="options-menu">
+            <li><a href="franquisias.html">Franquicias</a></li>
+            <li><a href="proveedores.html">Proveedores</a></li>
+            <li><a href="postulaciones.html">Bolsa de Trabajo</a></li>
+        </ul>
+    </nav>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section, footer, header');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.6 // 60% de la sección debe estar visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        // Compara el href del link con el ID de la sección visible
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+        
+        const optionsTrigger = document.getElementById('options-trigger');
+        const optionsMenu = document.getElementById('options-menu');
+
+        optionsTrigger.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita que salte al inicio del la página
+            optionsMenu.classList.toggle('show');
+        });
+
+        // Cerrar el menú si haces clic afuera
+        document.addEventListener('click', (e) => {
+            if (!optionsTrigger.contains(e.target) && !optionsMenu.contains(e.target)) {
+                optionsMenu.classList.remove('show');
+            }
+        });
+    });
+    </script>
 
     <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
     <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-250415973388062']", "https://form.jotform.com/")</script>       

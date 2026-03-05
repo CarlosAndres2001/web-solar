@@ -109,7 +109,7 @@ a, button, [role="button"] {
 /* ##########################################
    6. HERO SECTION
    ########################################## */
-   .hero {
+.hero {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -162,7 +162,7 @@ a, button, [role="button"] {
 /* ##########################################
    9. SECCION HISTORY (TÍTULO Y CONTENEDOR)
    ########################################## */
-   #history h2 {
+#history h2 {
     font-family: 'Oswald', sans-serif; /* Usando tu fuente */
     font-weight: 400;
     font-size: 3rem;
@@ -197,7 +197,7 @@ a, button, [role="button"] {
    ########################################## */
 .history-text {
     text-align: left;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', bold;
 }
 
 .history-text p {
@@ -209,7 +209,7 @@ a, button, [role="button"] {
 
 .history-text strong {
     color: #e61e25;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .history-badge {
@@ -217,7 +217,7 @@ a, button, [role="button"] {
     background: #ffcc00;
     color: black;
     padding: 10px 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 5px;
@@ -1064,5 +1064,78 @@ html, body {
         color: #ce1212; /* Texto rojo abajo del círculo o blanco dentro */
         font-weight: bold;
         margin-top: 35px; /* Baja el texto para que no pise el círculo */
+    }
+    /* Estilos para el menú que sube */
+    .options-menu {
+        position: absolute;
+        bottom: 85px; /* Aparece arriba de la barra (70px de alto + 15px de margen) */
+        right: 5%;
+        background: rgba(38, 36, 36, 0.98);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        padding: 10px 0;
+        list-style: none;
+        width: 180px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        
+        /* Estado inicial: oculto y abajo */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10000;
+    }
+
+    .options-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .options-menu li a {
+        display: block;
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        font-family: 'Oswald', sans-serif;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .options-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    .options-menu li a:active {
+        background: #ce1212;
+    }
+    .hamburger-icon svg {
+        transition: transform 0.3s ease;
+    }
+    
+    /* Animación de las líneas */
+    .line-top, .line-mid, .line-bot {
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+    
+    /* Transformación a X cuando el menú está abierto */
+    .nav-link.menu-open .line-top {
+        transform: translateY(6px) rotate(45deg);
+    }
+    
+    .nav-link.menu-open .line-mid {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    
+    .nav-link.menu-open .line-bot {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+    
+    /* Color de énfasis cuando está abierto */
+    .nav-link.menu-open {
+        color: #ffcc00 !important;
     }
 }
