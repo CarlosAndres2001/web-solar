@@ -761,7 +761,7 @@ font-family: 'Roboto', sans-serif;
 /* ##########################################
    20. LOADER (PROTECCIÓN ANTI-DISTORSIÓN)
    ########################################## */
-   #loader {
+#loader {
     position: fixed;
     top: 0;
     left: 0;
@@ -869,90 +869,64 @@ html, body {
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.08));
 }
 
+
 .map-path {
-    transition: fill 0.3s ease;
+    transition: fill 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
 }
 
-.map-path:hover {
-    fill: #ffcc00 !important;
+/* Hover específico para Bolivia */
+#BO:hover {
+    fill: url(#pattern-bo) !important;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }
 
-/* --- CARDS MÁS GRANDES --- */
-.info-card {
-    position: absolute;
-    background: white;
-    padding: 25px; /* Más aire interno */
-    border-radius: 20px;
-    border: 1px solid #eee;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
-    width: 300px; /* Aumentamos el ancho */
-    text-align: left;
-    z-index: 100;
-    
-    opacity: 0;
-    visibility: hidden;
-    transform: translate(-50%, 0);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* Hover específico para Paraguay */
+#PY:hover {
+    fill: url(#pattern-py) !important;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+} 
+
+.svg-map:hover .map-path:not(:hover) {
+    opacity: 0.7;
+    fill: #444; /* Color gris oscuro para los que no tienen el mouse encima */
 }
 
-/* Mostrar cards al hover */
-.map-container:has(#BO:hover) .bo-card{
+/* --- TEXTO DENTRO DEL MAPA --- */
+.map-label {
+    fill: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 6px; /* Tamaño pequeño porque el viewBox es pequeño */
+    font-weight: bold;
+    text-anchor: middle;
+    pointer-events: none; /* Para que no interfiera con el clic al path */
     opacity: 1;
-    visibility: visible;
-    transform: translate(-120%, -20px);
+    transition: opacity 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
 }
-.map-container:has(#PY:hover) .py-card {
+/* --- CAMBIO A NEGRO AL HACER HOVER --- */
+a:hover .map-label {
+    fill: #000000; /* Se pone negro cuando pasas el mouse por el país */
+    text-shadow: none; /* Quitamos la sombra para que se vea limpio sobre la bandera */
+}
+
+/* --- TEXTO DENTRO DEL MAPA --- */
+.map-labelb {
+    fill: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 8px; /* Tamaño pequeño porque el viewBox es pequeño */
+    font-weight: bold;
+    text-anchor: middle;
+    pointer-events: none; /* Para que no interfiera con el clic al path */
     opacity: 1;
-    visibility: visible;
-    transform: translate(20%, -20px);
+    transition: opacity 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
 }
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+/* --- CAMBIO A NEGRO AL HACER HOVER --- */
+a:hover .map-labelb {
+    fill: #000000; /* Se pone negro cuando pasas el mouse por el país */
+    text-shadow: none; /* Quitamos la sombra para que se vea limpio sobre la bandera */
 }
-
-.country-code {
-    font-size: 28px;
-    font-weight: bold;
-    color: #1a1a1a;
-}
-
-.country-name {
-    font-size: 26px;
-    font-weight: bold;
-    color: #d32f2f;
-}
-
-.card-locations {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 25px;
-    line-height: 1.4;
-}
-
-/* BOTÓN PRO */
-.visit-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #d32f2f;
-    color: white !important;
-    text-decoration: none;
-    padding: 14px 25px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 16px;
-    transition: transform 0.2s, background 0.3s;
-}
-
-.visit-btn:hover {
-    background: #b71c1c;
-    transform: scale(1.03);
-}
-
 /* POSICIONES (Ajustalas según tu SVG) */
 .bo-card { top: 20%; left: 35%; }
 .py-card { top: 55%; left: 70%; }
