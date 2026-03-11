@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollo El Solar | El sabor de Bolivia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#promos">Promos</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+
+            <div class="logo-container">
+                <a href="#home" class="logo-hanging">
+                    <img src="../combos/LOGO SIN TEXTO ABAJO.png" alt="Logo Pollo El Solar">
+                    </a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://wa.me/591XXXXXXXX" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> PEDIR AHORA
+                </a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero section">
+        <div class="hero-content reveal">
+            <h1>EL SABOR QUE <span class="highlight">BOLIVIA</span> PREFIERE</h1>
+            <p>Pollo crujiente, calientito y con el secreto de la casa.</p>
+            <a href="#menu" class="btn-primary">Ver Menú</a>
+        </div>
+    </section>
+
+    <section id="nosotros" class="about section">
+        <div class="container">
+            <h2 class="title-red">Sobre Nosotros</h2>
+            <div class="about-grid">
+                <div class="reveal-left">
+                    <p>En <strong>Pollo El Solar</strong>, llevamos años siendo el punto de encuentro de las familias bolivianas. Nuestra pasión es servir calidad, frescura y ese sabor único que solo nosotros sabemos lograr.</p>
+                </div>
+                <div class="reveal-right">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80" alt="Pollo Frito">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sucursales" class="branches section bg-white">
+        <div class="container">
+            <h2 class="title-yellow">Nuestras Sucursales</h2>
+            <div class="grid">
+                <div class="card reveal">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <h3>Santa Cruz</h3>
+                    <p>Av. Principal - 7mo Anillo</p>
+                </div>
+                <div class="card reveal">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <h3>La Paz</h3>
+                    <p>Zona Central - Calle 15</p>
+                </div>
+                <div class="card reveal">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <h3>Cochabamba</h3>
+                    <p>Próximamente cerca de ti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu section">
+        <div class="container">
+            <h2 class="title-red">Nuestro Menú</h2>
+            <div class="menu-container">
+                <div class="menu-item reveal">
+                    <span>Cubo Solar (12 piezas)</span>
+                    <span class="price">120 Bs.</span>
+                </div>
+                <div class="menu-item reveal">
+                    <span>Combo Familiar</span>
+                    <span class="price">85 Bs.</span>
+                </div>
+                <div class="menu-item reveal">
+                    <span>Cuarto de Pollo</span>
+                    <span class="price">25 Bs.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="promos" class="promos section bg-yellow">
+        <div class="container">
+            <h2>Promociones de Infarto</h2>
+            <div class="promo-banner reveal">
+                <h3>¡Martes 2x1 en Alitas!</h3>
+                <p>Solo por tiempo limitado en todas nuestras sucursales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="trabaja" class="work section">
+        <div class="container">
+            <h2 class="title-red">¡Únete al Equipo!</h2>
+            <form id="contact-form" class="reveal">
+                <input type="text" placeholder="Nombre Completo" required>
+                <input type="email" placeholder="Correo Electrónico" required>
+                <textarea placeholder="Cuéntanos por qué quieres trabajar con nosotros" rows="5"></textarea>
+                <button type="submit" class="btn-submit">Enviar CV</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="blog" class="blog section bg-white">
+        <div class="container">
+            <h2 class="title-red">Blog Solar</h2>
+            <div class="grid">
+                <article class="blog-post reveal">
+                    <h3>Secretos del Pollo Crujiente</h3>
+                    <p>Te contamos cómo logramos ese dorado perfecto...</p>
+                    <a href="#">Leer más</a>
+                </article>
+                <article class="blog-post reveal">
+                    <h3>Apertura en Tarija</h3>
+                    <p>¡Estamos creciendo para estar más cerca de ti!</p>
+                    <a href="#">Leer más</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Pollo El Solar Bolivia - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Animación de aparición al hacer scroll
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Ejecutar una vez al cargar por si hay elementos visibles
+        reveal();
+
+        // Manejo del menú móvil (Básico)
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '60px';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.background = '#D32F2F';
+        });
+    </script>
+</body>
+</html>
