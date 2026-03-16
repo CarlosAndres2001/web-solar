@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Nidos - Mapa Interactivo</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="sucursales.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#promos">Promos</a></li>
+                <li><a href="sucursales.html">Sucursales</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+
+            <div class="logo-container">
+                <a href="#home" class="logo-hanging">
+                    <img src="../combos/LOGO SIN TEXTO ABAJO.png" alt="Logo Pollo El Solar">
+                    </a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://wa.me/591XXXXXXXX" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> PEDIR AHORA
+                </a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="contenedor-principal">
+        <div id="mapa"></div>
+
+        <div id="panel-info">
+            <div id="contenido-panel">
+                </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // 1. Datos de las sucursales (Basado en tu imagen de Santa Cruz)
+        const sucursales = [
+            { id: 1, nombre: "Nido Equipetrol", lat: -17.7640, lng: -63.1920, direccion: "Barrio Equipetrol, Calle 7 Este", horario: "09:00 - 22:00" },
+            { id: 2, nombre: "Nido Centro", lat: -17.7830, lng: -63.1820, direccion: "Calle Junín esq. Av. Cañoto", horario: "08:00 - 21:00" },
+            { id: 3, nombre: "Nido Villa 1 de Mayo", lat: -17.7950, lng: -63.1350, direccion: "Av. Principal Villa 1 de Mayo", horario: "10:00 - 23:00" },
+            { id: 4, nombre: "Nido Norte", lat: -17.7350, lng: -63.1650, direccion: "Av. Banzer entre 4to y 5to anillo", horario: "09:00 - 22:00" }
+        ];
+
+        // 2. Inicializar el mapa centrado en Santa Cruz de la Sierra
+        const map = L.map('mapa').setView([-17.7833, -63.1821], 13);
+
+        // 3. Capa de mapa estilo "limpio/crema" (Sin marcas de agua de Google)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
+
+        const contenidoPanel = document.getElementById('contenido-panel');
+
+        // 4. Función para mostrar la lista de todas las sucursales (Cards)
+        function mostrarListaSucursales() {
+            let html = `<div class="titulo-seccion">Nuestros Nidos</div>`;
+            sucursales.forEach(s => {
+                html += `
+                    <div class="card-sucursal" onclick="seleccionarSucursal(${s.id})">
+                        <strong>${s.nombre}</strong><br>
+                        <small>${s.direccion}</small>
+                    </div>
+                `;
+            });
+            contenidoPanel.innerHTML = html;
+        }
+
+        // 5. Función para mostrar info de una sucursal específica
+        function seleccionarSucursal(id) {
+            const s = sucursales.find(item => item.id === id);
+            
+            // Centrar mapa al hacer click
+            map.flyTo([s.lat, s.lng], 15);
+
+            contenidoPanel.innerHTML = `
+                <button class="btn-volver" onclick="mostrarListaSucursales()">← Volver a la lista</button>
+                <div class="info-detallada">
+                    <div class="titulo-seccion">${s.nombre}</div>
+                    <p><strong>Dirección:</strong> ${s.direccion}</p>
+                    <p><strong>Horario:</strong> ${s.horario}</p>
+                    <img src="https://via.placeholder.com/300x150?text=Foto+del+Nido" style="width:100%; border-radius:10px;">
+                    <p style="margin-top:20px;">Aquí puedes poner una descripción más larga de la sucursal, servicios disponibles, etc.</p>
+                </div>
+            `;
+        }
+
+        // 6. Agregar marcadores al mapa
+        sucursales.forEach(s => {
+            // Icono personalizado con el número
+            const customIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: `<span>${s.id}</span>`,
+                iconSize: [30, 30]
+            });
+
+            const marker = L.marker([s.lat, s.lng], { icon: customIcon }).addTo(map);
+            
+            // Al hacer click en el marcador del mapa, se actualiza el panel derecho
+            marker.on('click', () => {
+                seleccionarSucursal(s.id);
+            });
+        });
+
+        // Carga inicial
+        mostrarListaSucursales();
+
+    </script>
+
+</body>
+</html>
