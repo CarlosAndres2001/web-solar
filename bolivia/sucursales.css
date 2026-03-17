@@ -1,10 +1,10 @@
 :root {
-    --primario: #f39c12;
+    --primario: #ee0000;
     --fondo-mapa: #f4e9d5;
     --texto: #333;
 }
 :root {
-    --rojo: #D32F2F;
+    --rojo: #ec0000;
     --amarillo: #FFC107;
     --blanco: #FFFFFF;
     --oscuro: #212121;
@@ -217,10 +217,10 @@ header {
 
 /* Personalización de los iconos del mapa */
 .custom-div-icon {
-    background: var(--primario);
+    background-image: url(../fotos/logito.png);
     border: 2px solid white;
     border-radius: 50%;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: center;
     line-height: 30px;

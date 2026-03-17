@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros Nidos - Mapa Interactivo</title>
+    <title>Nuestras Sucursales </title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="sucursales.css">
@@ -41,7 +41,7 @@
 
         <div id="panel-info">
             <div id="contenido-panel">
-                </div>
+            </div>
         </div>
     </div>
 
@@ -50,10 +50,20 @@
     <script>
         // 1. Datos de las sucursales (Basado en tu imagen de Santa Cruz)
         const sucursales = [
-            { id: 1, nombre: "Nido Equipetrol", lat: -17.7640, lng: -63.1920, direccion: "Barrio Equipetrol, Calle 7 Este", horario: "09:00 - 22:00" },
-            { id: 2, nombre: "Nido Centro", lat: -17.7830, lng: -63.1820, direccion: "Calle Junín esq. Av. Cañoto", horario: "08:00 - 21:00" },
-            { id: 3, nombre: "Nido Villa 1 de Mayo", lat: -17.7950, lng: -63.1350, direccion: "Av. Principal Villa 1 de Mayo", horario: "10:00 - 23:00" },
-            { id: 4, nombre: "Nido Norte", lat: -17.7350, lng: -63.1650, direccion: "Av. Banzer entre 4to y 5to anillo", horario: "09:00 - 22:00" }
+            { id: 1, nombre: "Sucursal Cañoto", lat: -17.786538279939435, lng: -63.18826980007806, direccion: "Av. Cañoto, Esq. suarez de figueroa", horario: "11:00 - 23:00" },
+            { id: 2, nombre: "Sucursal Isuto", lat: -17.754683227688286, lng: -63.19007245767147, direccion: "Av. La salle, Esq. francisco herbas", horario: "11:00 - 23:00" },
+            { id: 3, nombre: "Sucursal km6", lat:-17.828320875390002, lng: -63.22672882883573, direccion: "Av. Doble vía a la guardia, 6to anillo", horario: "11:00 - 23:00" },
+            { id: 4, nombre: "Sucursal Indana", lat: -17.79288957318133, lng: -63.20515189999999, direccion: "Av. tercer anillo, Patio de comidas de comercial indana", horario: "11:00 - 23:00" },
+            { id: 5, nombre: "Sucursal Megacenter", lat:-17.797689769632857, lng:-63.17940523068588, direccion: "Av. El trompillo, Patio de comidas megacenter", horario:"11:00 - 23:00" },
+            { id: 6, nombre: "Sucursal Autopia", lat:-17.760061193424963, lng: -63.1744533865072, direccion: "Av. Beni, tercer anillo interno", horario: "11:00 - 23:00"},
+            { id: 7, nombre: "Sucursal Santos Dumont", lat:-17.817786537546485, lng: -63.183372855821325, direccion: "Av. Santos dumont entre 3er y 4to anillo, calle wenceslao hurtado", horario: "11:00 - 23:00"},
+            { id: 8, nombre: "Sucursal Norte", lat:-17.721265058474124, lng:-63.163792075988574, direccion:"Av. Cristo redentor entre 7mo y 8vo anillo", horario:"11:00 - 23:00"},
+            { id: 9, nombre: "Sucursal Villa 1ro de mayo", lat: -17.798005666167317, lng:-63.13425402263632, direccion:"Av. 1ro de mayo, Patio de comidas hipermaxi", horario:"11:00 - 23:00"},
+            { id: 10, nombre: "Sucursal Virgend e cotoca",lat: -17.781437946651906, lng:-63.153303461371756, direccion:"Av. Virgen de cotoca entre 3er anillo interno y 3er anillo externo", horario:"11:00 - 23:00"},
+            { id: 11, nombre: "Sucursal Pampa", lat:-17.767501914512312, lng:-63.113195688948494, direccion:"Av. Virgen de cotoca, B/ El mundo", horario:"11:00 - 23:00"},
+            { id: 12, nombre: "Sucursal Plan 3000", lat:-17.824039923762594, lng:-63.143684855821334, direccion:"Av. paurito esquina calle 1", horario:"11:00 - 23:00"},
+            { id: 13, nombre: "Sucursal Ventura mall", lat:-17.753756242407114, lng:-63.19939763376639, direccion:"Av. Cuarto anillo, patio de comidas del ventura mall", horario:"11:00- 23:00"},
+            { id: 14, nombre: "Sucursal cambodromo", lat:-17.741799486525704, lng:-63.14419836462262, direccion: "Av. Mutualista 6to anillo, patio de comidas del hipermaxi", horario:"11:00 - 23:00"}
         ];
 
         // 2. Inicializar el mapa centrado en Santa Cruz de la Sierra
@@ -68,7 +78,7 @@
 
         // 4. Función para mostrar la lista de todas las sucursales (Cards)
         function mostrarListaSucursales() {
-            let html = `<div class="titulo-seccion">Nuestros Nidos</div>`;
+            let html = `<div class="titulo-seccion">Nuestras Sucursales</div>`;
             sucursales.forEach(s => {
                 html += `
                     <div class="card-sucursal" onclick="seleccionarSucursal(${s.id})">
@@ -104,8 +114,8 @@
             // Icono personalizado con el número
             const customIcon = L.divIcon({
                 className: 'custom-div-icon',
-                html: `<span>${s.id}</span>`,
-                iconSize: [30, 30]
+                html: `<span> <img src="../fotos/logito.png" style="width:40px"> </span>`,
+                iconSize: [50, 50]
             });
 
             const marker = L.marker([s.lat, s.lng], { icon: customIcon }).addTo(map);
