@@ -12,18 +12,18 @@
     <header>
         <nav class="navbar">
             <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#menu">Menú</a></li>
-                <li><a href="#promos">Promos</a></li>
+                <li><a href="indexbo.html">Inicio</a></li>
+                <li><a href="indexbo.html#nosotros">Nosotros</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="promos.html">Promos</a></li>
                 <li><a href="sucursales.html">Sucursales</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="blog.html">Blog</a></li>
             </ul>
 
             <div class="logo-container">
-                <a href="#home" class="logo-hanging">
+                <a href="indexbo.html" class="logo-hanging">
                     <img src="../combos/LOGO SIN TEXTO ABAJO.png" alt="Logo Pollo El Solar">
-                    </a>
+                </a>
             </div>
 
             <div class="nav-actions">
@@ -36,19 +36,29 @@
             </div>
         </nav>
     </header>
-    <div class="contenedor-principal">
+
+    <div class="contenedor-mapa-global">
         <div id="mapa"></div>
 
-        <div id="panel-info">
-            <div id="contenido-panel">
-            </div>
+        <div class="overlay-titulo">
+            <h1>Nuestras Sucursales</h1>
+            <p>El sabor de El Solar, siempre cerca de ti</p>
+        </div>
+
+        <div id="wrapper-sucursales">
+            <div id="lista-cards-horizontal">
+                </div>
+        </div>
+
+        <div id="detalle-sucursal-overlay" class="hidden">
+            <button class="btn-cerrar" onclick="cerrarDetalle()">×</button>
+            <div id="contenido-detalle"></div>
         </div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        // 1. Datos de las sucursales (Basado en tu imagen de Santa Cruz)
         const sucursales = [
             { id: 1, nombre: "Sucursal Cañoto", lat: -17.786538279939435, lng: -63.18826980007806, direccion: "Av. Cañoto, Esq. suarez de figueroa", horario: "11:00 - 23:00" },
             { id: 2, nombre: "Sucursal Isuto", lat: -17.754683227688286, lng: -63.19007245767147, direccion: "Av. La salle, Esq. francisco herbas", horario: "11:00 - 23:00" },
@@ -59,77 +69,72 @@
             { id: 7, nombre: "Sucursal Santos Dumont", lat:-17.817786537546485, lng: -63.183372855821325, direccion: "Av. Santos dumont entre 3er y 4to anillo, calle wenceslao hurtado", horario: "11:00 - 23:00"},
             { id: 8, nombre: "Sucursal Norte", lat:-17.721265058474124, lng:-63.163792075988574, direccion:"Av. Cristo redentor entre 7mo y 8vo anillo", horario:"11:00 - 23:00"},
             { id: 9, nombre: "Sucursal Villa 1ro de mayo", lat: -17.798005666167317, lng:-63.13425402263632, direccion:"Av. 1ro de mayo, Patio de comidas hipermaxi", horario:"11:00 - 23:00"},
-            { id: 10, nombre: "Sucursal Virgend e cotoca",lat: -17.781437946651906, lng:-63.153303461371756, direccion:"Av. Virgen de cotoca entre 3er anillo interno y 3er anillo externo", horario:"11:00 - 23:00"},
+            { id: 10, nombre: "Sucursal Virgen de cotoca",lat: -17.781437946651906, lng:-63.153303461371756, direccion:"Av. Virgen de cotoca entre 3er anillo interno y 3er anillo externo", horario:"11:00 - 23:00"},
             { id: 11, nombre: "Sucursal Pampa", lat:-17.767501914512312, lng:-63.113195688948494, direccion:"Av. Virgen de cotoca, B/ El mundo", horario:"11:00 - 23:00"},
             { id: 12, nombre: "Sucursal Plan 3000", lat:-17.824039923762594, lng:-63.143684855821334, direccion:"Av. paurito esquina calle 1", horario:"11:00 - 23:00"},
             { id: 13, nombre: "Sucursal Ventura mall", lat:-17.753756242407114, lng:-63.19939763376639, direccion:"Av. Cuarto anillo, patio de comidas del ventura mall", horario:"11:00- 23:00"},
             { id: 14, nombre: "Sucursal cambodromo", lat:-17.741799486525704, lng:-63.14419836462262, direccion: "Av. Mutualista 6to anillo, patio de comidas del hipermaxi", horario:"11:00 - 23:00"}
         ];
 
-        // 2. Inicializar el mapa centrado en Santa Cruz de la Sierra
+        // Inicializar mapa
         const map = L.map('mapa').setView([-17.7833, -63.1821], 13);
-
-        // 3. Capa de mapa estilo "limpio/crema" (Sin marcas de agua de Google)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap'
+            attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        const contenidoPanel = document.getElementById('contenido-panel');
+        const listaCards = document.getElementById('lista-cards-horizontal');
+        const detalleOverlay = document.getElementById('detalle-sucursal-overlay');
+        const contenidoDetalle = document.getElementById('contenido-detalle');
 
-        // 4. Función para mostrar la lista de todas las sucursales (Cards)
-        function mostrarListaSucursales() {
-            let html = `<div class="titulo-seccion">Nuestras Sucursales</div>`;
+        function cargarCards() {
+            let html = '';
             sucursales.forEach(s => {
                 html += `
-                    <div class="card-sucursal" onclick="seleccionarSucursal(${s.id})">
-                        <strong>${s.nombre}</strong><br>
-                        <small>${s.direccion}</small>
+                    <div class="card-sucursal-mini" id="card-${s.id}" onclick="seleccionarSucursal(${s.id})">
+                        <h3 style="color: var(--rojo); margin-bottom: 5px; font-size:1.1rem;">${s.nombre}</h3>
+                        <p style="font-size: 0.75rem; color: #666; line-height:1.2;"><i class="fas fa-map-marker-alt"></i> ${s.direccion}</p>
                     </div>
                 `;
             });
-            contenidoPanel.innerHTML = html;
+            listaCards.innerHTML = html;
         }
 
-        // 5. Función para mostrar info de una sucursal específica
         function seleccionarSucursal(id) {
             const s = sucursales.find(item => item.id === id);
-            
-            // Centrar mapa al hacer click
-            map.flyTo([s.lat, s.lng], 15);
+            map.flyTo([s.lat, s.lng], 16, { duration: 1.5 });
 
-            contenidoPanel.innerHTML = `
-                <button class="btn-volver" onclick="mostrarListaSucursales()">← Volver a la lista</button>
-                <div class="info-detallada">
-                    <div class="titulo-seccion">${s.nombre}</div>
-                    <p><strong>Dirección:</strong> ${s.direccion}</p>
-                    <p><strong>Horario:</strong> ${s.horario}</p>
-                    <img src="https://via.placeholder.com/300x150?text=Foto+del+Nido" style="width:100%; border-radius:10px;">
-                    <p style="margin-top:20px;">Aquí puedes poner una descripción más larga de la sucursal, servicios disponibles, etc.</p>
-                </div>
+            detalleOverlay.classList.remove('hidden');
+            contenidoDetalle.innerHTML = `
+                <h2 style="color:var(--rojo); margin-bottom:10px;">${s.nombre}</h2>
+                <p style="font-size:0.9rem;"><strong>Dirección:</strong> ${s.direccion}</p>
+                <p style="font-size:0.9rem;"><strong>Horario:</strong> ${s.horario}</p>
+                <img src="../fotos/sucursal-${s.id}.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Pollo+El+Solar'" style="width:100%; border-radius:15px; margin: 15px 0; object-fit:cover; height:150px;">
+                <a href="https://www.google.com/maps?q=${s.lat},${s.lng}" target="_blank" class="btn-whatsapp" style="justify-content:center; background:var(--rojo);">
+                    VER EN GOOGLE MAPS
+                </a>
             `;
+
+            // Opcional: Desplazar la card seleccionada al centro de la vista
+            document.getElementById(`card-${id}`).scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
 
-        // 6. Agregar marcadores al mapa
+        function cerrarDetalle() {
+            detalleOverlay.classList.add('hidden');
+        }
+
+        // Marcadores
         sucursales.forEach(s => {
-            // Icono personalizado con el número
             const customIcon = L.divIcon({
-                className: 'custom-div-icon',
-                html: `<span> <img src="../fotos/logito.png" style="width:40px"> </span>`,
-                iconSize: [50, 50]
+                className: 'marker-solar',
+                html: `<img src="../fotos/logito.png" style="width:40px; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5))">`,
+                iconSize: [40, 40]
             });
 
             const marker = L.marker([s.lat, s.lng], { icon: customIcon }).addTo(map);
-            
-            // Al hacer click en el marcador del mapa, se actualiza el panel derecho
-            marker.on('click', () => {
-                seleccionarSucursal(s.id);
-            });
+            marker.on('click', () => seleccionarSucursal(s.id));
         });
 
-        // Carga inicial
-        mostrarListaSucursales();
-
+        cargarCards();
     </script>
-
 </body>
 </html>
