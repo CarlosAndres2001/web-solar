@@ -153,31 +153,6 @@ header {
     padding-top: 80px;
 }
 
-/* Estilo del Mapa (Izquierda) */
-#mapa {
-    flex: 2; /* Toma 2/3 del espacio */
-    background-color: var(--fondo-mapa);
-}
-
-/* Estilo del Panel (Derecha) */
-#panel-info {
-    flex: 1; /* Toma 1/3 del espacio */
-    background: #ffffff05;
-    border-left: 4px solid var(--primario);
-    overflow-y: auto;
-    padding: 20px;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-}
-
-.titulo-seccion {
-    color: var(--primario);
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--primario);
-}
-
 /* Cards de sucursales */
 .card-sucursal {
     background: #fdfdfd00;
@@ -245,7 +220,7 @@ header {
 .overlay-titulo {
     position: absolute;
     top: 30px;
-    left: 50%;
+    left: 20%;
     transform: translateX(-50%);
     z-index: 10;
     text-align: center;
@@ -331,4 +306,244 @@ header {
     height: 30px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+
+/* --- RESPONSIVE OPTIMIZADO PARA SUCURSALES --- */
+
+@media (max-width: 900px) {
+    /* Navbar móvil */
+    .nav-links { display: none; }
+    .logo-container { position: relative; left: 0; transform: none; }
+    .logo-hanging img { height: 60px; }
+    .logo-hanging { padding: 5px 10px; }
+    
+    /* Ajuste de altura del contenedor mapa */
+    .contenedor-mapa-global {
+        height: calc(100vh - 80px);
+    }
+
+    /* Título más pequeño para que no tape el mapa */
+    .overlay-titulo {
+        top: 15px;
+        padding: 10px 20px;
+        width: 85%;
+        left: 50%;
+    }
+    .overlay-titulo h1 { font-size: 1.1rem; }
+    .overlay-titulo p { font-size: 0.7rem; }
+
+    /* Carrusel de abajo: Cards más angostas */
+    #wrapper-sucursales {
+        bottom: 15px;
+        padding: 0 10px;
+    }
+    .card-sucursal-mini {
+        min-width: 220px;
+        padding: 12px;
+    }
+    .card-sucursal-mini h3 { font-size: 1rem; }
+
+    /* PANEL DE DETALLE: En móvil debe salir desde abajo o centrarse */
+    #detalle-sucursal-overlay {
+        right: 5%;
+        left: 5%;
+        top: auto;
+        bottom: 20px; /* Se posiciona sobre el carrusel al abrir */
+        width: 90%;
+        padding: 20px;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    
+    #detalle-sucursal-overlay.hidden {
+        transform: translateY(150%); /* En móvil se esconde hacia abajo */
+        display: none; /* Evita que estorbe el click en el mapa */
+    }
+}
+
+/* Ajustes para teléfonos muy pequeños (iPhone SE, etc) */
+@media (max-width: 400px) {
+    .btn-whatsapp {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+    }
+    .overlay-titulo h1 { font-size: 0.9rem; }
+}
+/* OCULTAR EN PC */
+.bottom-nav { display: none; }
+
+@media (max-width: 768px) {
+    .map-section h2 { font-size: 30px !important; }
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 20px; /* Separado del borde para efecto flotante */
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        height: 70px;
+        background: rgba(38, 36, 36, 0.95); /* Gris oscuro con transparencia */
+        backdrop-filter: blur(10px); /* Desenfoque de fondo PRO */
+        border-radius: 20px;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9999;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #b0b0b0;
+        text-decoration: none;
+        font-family: 'Oswald', sans-serif;
+        font-size: 10px;
+        transition: 0.3s ease;
+        flex: 1;
+    }
+
+    .nav-link span { margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Efecto cuando está activo */
+    .nav-link:active, .nav-link:focus {
+        color: #ffcc00;
+    }
+
+    /* EL BOTÓN CENTRAL "FLOTANTE" */
+    .nav-center {
+        position: relative;
+        top: -15px; /* Lo sube por encima de la barra */
+    }
+
+    .nav-main-btn {
+        width: 65px;
+        height: 65px;
+        background: #ce1212; /* Rojo principal */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+        border: 4px solid #fff; /* Aro blanco para resaltar */
+        transition: transform 0.2s;
+    }
+
+    .nav-main-btn:active {
+        transform: scale(0.9);
+    }
+
+    /* Espacio para que el contenido no quede debajo */
+    body { padding-bottom: 1px;}
+
+    .nav-link {
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 1;
+    }
+
+    /* ESTADO ACTIVO: Se convierte en el botón circular rojo */
+    .nav-link.active {
+        color: #fff !important;
+        transform: translateY(-20px); /* Sube el botón */
+    }
+
+    /* Creamos el círculo rojo con un pseudo-elemento para no romper el SVG */
+    .nav-link.active::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: #ce1212;
+        border-radius: 50%;
+        z-index: -1;
+        box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+        border: 4px solid #fff;
+    }
+
+    /* Ajuste para el texto cuando está activo */
+    .nav-link.active span {
+        display: none;
+        color: #ce1212; /* Texto rojo abajo del círculo o blanco dentro */
+        font-weight: bold;
+        margin-top: 35px; /* Baja el texto para que no pise el círculo */
+    }
+    /* Estilos para el menú que sube */
+    .options-menu {
+        position: absolute;
+        bottom: 85px; /* Aparece arriba de la barra (70px de alto + 15px de margen) */
+        right: 5%;
+        background: rgba(38, 36, 36, 0.98);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        padding: 10px 0;
+        list-style: none;
+        width: 180px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        
+        /* Estado inicial: oculto y abajo */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10000;
+    }
+
+    .options-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .options-menu li a {
+        display: block;
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        font-family: 'Oswald', sans-serif;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .options-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    .options-menu li a:active {
+        background: #ce1212;
+    }
+    .hamburger-icon svg {
+        transition: transform 0.3s ease;
+    }
+    
+    /* Animación de las líneas */
+    .line-top, .line-mid, .line-bot {
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+    
+    /* Transformación a X cuando el menú está abierto */
+    .nav-link.menu-open .line-top {
+        transform: translateY(6px) rotate(45deg);
+    }
+    
+    .nav-link.menu-open .line-mid {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    
+    .nav-link.menu-open .line-bot {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+    
+    /* Color de énfasis cuando está abierto */
+    .nav-link.menu-open {
+        color: #ffcc00 !important;
+    }
 }

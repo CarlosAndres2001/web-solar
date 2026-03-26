@@ -55,7 +55,81 @@
             <div id="contenido-detalle"></div>
         </div>
     </div>
+    <nav class="bottom-nav">
+        <a href="#inicio" class="nav-link">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>Inicio</span>
+        </a>
+        <a href="#mapita" class="nav-link">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Encontranos</span>
+        </a>
+        <a href="#footer" class="nav-link">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span>Info</span>
+        </a>
+        <a href="javascript:void(0)" class="nav-link" id="options-trigger">
+            <div class="hamburger-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line class="line-top" x1="3" y1="6" x2="21" y2="6"></line>
+                    <line class="line-mid" x1="3" y1="12" x2="21" y2="12"></line>
+                    <line class="line-bot" x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+            <span>Opciones</span>
+        </a>
+    
+        <ul class="options-menu" id="options-menu">
+            <li><a href="franquicias.html">Franquicias</a></li>
+            <li><a href="proveedores.html">Proveedores</a></li>
+            <li><a href="postulaciones.html">Bolsa de Trabajo</a></li>
+        </ul>
+    </nav>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section, footer, header');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.6 // 60% de la sección debe estar visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        // Compara el href del link con el ID de la sección visible
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        const optionsTrigger = document.getElementById('options-trigger');
+        const optionsMenu = document.getElementById('options-menu');
+
+        optionsTrigger.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita que salte al inicio del la página
+            optionsMenu.classList.toggle('show');
+        });
+
+        // Cerrar el menú si haces clic afuera
+        document.addEventListener('click', (e) => {
+            if (!optionsTrigger.contains(e.target) && !optionsMenu.contains(e.target)) {
+                optionsMenu.classList.remove('show');
+            }
+        });
+    });
+    </script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
