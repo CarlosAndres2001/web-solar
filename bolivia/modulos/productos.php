@@ -1,9 +1,8 @@
 <?php
-include 'config.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// --- 1. LÓGICA DE PROCESAMIENTO (Backend) ---
-
-// A. GUARDAR (NUEVO O EDITAR)
 if (isset($_POST['btn_guardar_prod'])) {
     $id = $_POST['id_producto'] ?? '';
     $cat_id = $_POST['categoria_id'];

@@ -1,9 +1,17 @@
 <?php
-include 'config.php'; // Asegúrate de que este archivo tenga el $pdo listo
 
-// --- 1. LÓGICA DE PROCESAMIENTO (Acciones) ---
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// A. REGISTRAR O ACTUALIZAR
+// Verificar que sea ADMIN
+if (!isset($_SESSION['user_rol']) || $_SESSION['user_rol'] != 'admin') {
+    echo "<script>alert('❌ No tienes permisos para ver usuarios.'); window.location='admin.php?mod=dashboard';</script>";
+    exit;
+}
+
+
+
 if (isset($_POST['btn_guardar'])) {
     $id = $_POST['id_usuario'] ?? ''; // Si viene ID, es edición
     $nombre = $_POST['nombre'];

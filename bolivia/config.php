@@ -1,4 +1,10 @@
 <?php
+
+if (defined('CONFIG_LOADED')) {
+    return;
+}
+define('CONFIG_LOADED', true);
+
 $host = 'localhost';
 $db   = 'solar_web';
 $user = 'root';
@@ -29,5 +35,21 @@ function registrarLog($pdo, $accion, $detalle) {
             VALUES (?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$usuario_id, $accion, $detalle, $ip]);
+}
+
+// Función para restaurar caja abierta al iniciar sesión
+function restaurarCajaAbierta($pdo, $usuario_id) {
+    // Buscar si este usuario tiene una caja abierta
+    $stmt = $pdo->prepare("SELECT ac.id FROM apertura_caja ac 
+                           WHERE ac.usuario_id = ? AND ac.estado = 'abierta' 
+                           LIMIT 1");
+    $stmt->execute([$usuario_id]);
+    $apertura = $stmt->fetch();
+    
+    if($apertura) {
+        $_SESSION['apertura_caja_id'] = $apertura['id'];
+        return true;
+    }
+    return false;
 }
 ?>

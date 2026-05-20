@@ -1,9 +1,8 @@
 <?php
-include 'config.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}   
 
-// --- 1. LÓGICA DE PROCESAMIENTO ---
-
-// A. GUARDAR (NUEVO O EDITAR)
 if (isset($_POST['btn_guardar_suc'])) {
     $id = $_POST['id_sucursal'] ?? '';
     $nombre = $_POST['nombre'];

@@ -1,7 +1,8 @@
 <?php
-include 'config.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// --- 1. LÓGICA DE PROCESAMIENTO ---
 
 if (isset($_POST['btn_guardar_cat'])) {
     $id = $_POST['id_categoria'] ?? '';
@@ -51,6 +52,104 @@ $categorias = $pdo->query("SELECT * FROM categorias WHERE estado = 1 ORDER BY no
     }
     .btn-si { background: #000; color: #D4AF37; padding: 12px 25px; border: none; cursor: pointer; font-weight: bold; border-radius: 6px; }
     .btn-no { background: #f4f4f4; color: #333; padding: 12px 25px; border: none; cursor: pointer; margin-right: 10px; border-radius: 6px; }
+    /* ===== CSS RESPONSIVO PARA MÓDULO DE CATEGORÍAS ===== */
+
+    /* Tablets y pantallas medianas (768px y menos) */
+    @media (max-width: 768px) {
+        /* Formulario en columna */
+        #formCat {
+            flex-direction: column !important;
+            gap: 15px !important;
+        }
+        
+        #formCat > div {
+            width: 100% !important;
+        }
+        
+        #formCat button {
+            width: 100% !important;
+            margin-top: 5px;
+        }
+        
+        /* Modal más pequeño */
+        .modal-box {
+            width: 90% !important;
+            margin: 20px;
+            padding: 20px !important;
+        }
+        
+        /* Tabla - scroll horizontal */
+        .table-card {
+            overflow-x: auto !important;
+        }
+        
+        table {
+            min-width: 500px;
+        }
+        
+        th, td {
+            padding: 10px !important;
+            font-size: 0.9em;
+        }
+    }
+
+    /* Móviles (480px y menos) */
+    @media (max-width: 480px) {
+        /* Formulario más compacto */
+        #formCat {
+            gap: 10px !important;
+        }
+        
+        #formCat input {
+            padding: 10px !important;
+            font-size: 14px;
+        }
+        
+        #formCat button {
+            padding: 10px !important;
+            font-size: 14px;
+            height: auto !important;
+        }
+        
+        /* Títulos más pequeños */
+        h3 {
+            font-size: 1.2em !important;
+        }
+        
+        /* Botones de acción en tabla */
+        td a {
+            display: inline-block;
+            margin-bottom: 5px;
+            padding: 6px 10px !important;
+            font-size: 11px !important;
+        }
+        
+        /* Modal ajustado */
+        .modal-box {
+            padding: 15px !important;
+        }
+        
+        .btn-si, .btn-no {
+            padding: 8px 15px !important;
+            font-size: 13px;
+        }
+    }
+
+    /* Móviles muy pequeños (375px) */
+    @media (max-width: 375px) {
+        .modal-box h2 {
+            font-size: 1.2em !important;
+        }
+        
+        .modal-box p {
+            font-size: 13px !important;
+        }
+        
+        td a {
+            padding: 5px 8px !important;
+            font-size: 10px !important;
+        }
+    }
 </style>
 
 <div style="background:#fff; padding:25px; border-radius:8px; border:1px solid #eee; margin-bottom:30px;">
