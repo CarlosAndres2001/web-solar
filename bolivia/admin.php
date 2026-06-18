@@ -29,6 +29,7 @@ if($user_rol == 'admin') {
         ['mod' => 'ventas', 'icono' => '🛒', 'nombre' => 'Ventas'],
         ['mod' => 'productos', 'icono' => '🍗', 'nombre' => 'Productos'],
         ['mod' => 'categorias', 'icono' => '📂', 'nombre' => 'Categorías'],
+        ['mod' => 'popups', 'icono' => '👨‍💼', 'nombre' => 'Pop-ups'],
         ['mod' => 'clientes', 'icono' => '👥', 'nombre' => 'Clientes'],
         ['mod' => 'metodos_pago', 'icono' => '💳', 'nombre' => 'Métodos de Pago'],
         ['mod' => 'sucursales', 'icono' => '📍', 'nombre' => 'Sucursales'],
