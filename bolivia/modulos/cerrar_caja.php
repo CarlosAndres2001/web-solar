@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     unset($_SESSION['apertura_caja_id']);
     
-    echo "<script>alert('✅ Caja cerrada exitosamente'); window.location='admin.php?mod=cajas';</script>";
+    echo "<script>alert('✅ Caja cerrada exitosamente'); window.location='admin.php?mod=mis_cajas';</script>";
     exit;
 }
 ?>

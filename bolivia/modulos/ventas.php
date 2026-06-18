@@ -68,8 +68,8 @@ if(isset($_POST['btn_procesar_venta'])) {
         registrarLog($pdo, "VENTA_REGISTRADA", "Venta ID: $venta_id - Total: $total BOB");
         
         $pdo->commit();
-        echo "<script>alert('✅ Venta registrada exitosamente'); window.location='admin.php?mod=ventas';</script>";
-        
+        //echo "<script>alert('✅ Venta registrada exitosamente'); window.location='admin.php?mod=ventas';</script>";
+        echo "<script> alert('✅ Venta registrada exitosamente');window.location='modulos/ticket_venta.php?venta_id=$venta_id&auto_print=1'; </script>";
     } catch(Exception $e) {
         $pdo->rollBack();
         echo "<script>alert('❌ Error: " . $e->getMessage() . "');</script>";
@@ -81,7 +81,7 @@ $categorias = $pdo->query("SELECT * FROM categorias WHERE estado = 1 ORDER BY no
 $productos = $pdo->query("SELECT p.*, c.nombre as categoria_nombre 
                           FROM productos p 
                           JOIN categorias c ON p.categoria_id = c.id 
-                          WHERE p.visible = 1 
+                          WHERE p.estado = 1 
                           ORDER BY c.nombre, p.nombre")->fetchAll();
 ?>
 
@@ -196,7 +196,7 @@ $productos = $pdo->query("SELECT p.*, c.nombre as categoria_nombre
             <br>
             <small>Monto inicial: <?php echo number_format($caja_activa['monto_inicial'], 2); ?> BOB | Abierta: <?php echo date('d/m/Y H:i', strtotime($caja_activa['fecha_apertura'])); ?></small>
         </div>
-        <button onclick="location.href='admin.php?mod=cajas'" style="background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">🔒 CERRAR CAJA</button>
+        <button onclick="location.href='admin.php?mod=cerrar_caja'" style="background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">🔒 CERRAR CAJA</button>
     </div>
 </div>
 

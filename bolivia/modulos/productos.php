@@ -99,7 +99,7 @@ if (isset($_GET['toggle_visible'])) {
 // D. ELIMINAR PRODUCTO (SOFT DELETE)
 if (isset($_GET['del'])) {
     $id_del = $_GET['del'];
-    $pdo->prepare("UPDATE productos SET visible = 0 WHERE id = ?")->execute([$id_del]); // O usar campo estado si lo tienes
+    $pdo->prepare("UPDATE productos SET estado = 0 WHERE id = ?")->execute([$id_del]); // O usar campo estado si lo tienes
     registrarLog($pdo, "ELIMINAR_PRODUCTO", "ID: $id_del (Seteado como no visible)");
     echo "<script>window.location='admin.php?mod=productos';</script>";
     exit;
@@ -115,6 +115,7 @@ $sql_prod = "SELECT p.*, c.nombre as cat_nom,
              (SELECT ruta_foto FROM producto_fotos WHERE producto_id = p.id AND orden = 0 AND estado = 1 LIMIT 1) as foto_id
              FROM productos p 
              LEFT JOIN categorias c ON p.categoria_id = c.id 
+             WHERE p.estado = 1
              ORDER BY p.id DESC";
 $productos = $pdo->query($sql_prod)->fetchAll();
 

@@ -1,46 +1,130 @@
 <?php
-// exportar_excel.php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include 'config.php';
 
-header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment; filename="reporte_ventas_' . date('Y-m-d') . '.xls"');
+// Limpiar cualquier salida previa
+ob_clean();
 
-echo "<table border='1'>";
-echo "<tr><th>ID</th><th>Fecha</th><th>Sucursal</th><th>Cliente</th><th>Productos</th><th>Total</th><th>Método Pago</th></tr>";
+global $pdo;
+require_once '../config.php';
 
-$ventas = $pdo->query("SELECT v.*, s.nombre as sucursal_nombre, c.nombre as cliente_nombre 
-                       FROM ventas v 
-                       LEFT JOIN sucursales s ON v.sucursal_id = s.id 
-                       LEFT JOIN clientes c ON v.cliente_id = c.id 
-                       WHERE DATE(v.fecha_venta) = CURDATE() 
-                       ORDER BY v.id DESC");
+// Obtener filtros
+$fecha_inicio = $_GET['fecha_inicio'] ?? '';
+$fecha_fin = $_GET['fecha_fin'] ?? '';
+$sucursal_id = $_GET['sucursal_id'] ?? '';
+$usuario_id = $_GET['usuario_id'] ?? '';
+$cliente_id = $_GET['cliente_id'] ?? '';
+$producto_id = $_GET['producto_id'] ?? '';
+$estado_venta = $_GET['estado_venta'] ?? '';
 
-foreach($ventas as $v) {
-    // Obtener productos de la venta
-    $stmt = $pdo->prepare("SELECT p.nombre, vd.cantidad FROM venta_detalle vd JOIN productos p ON vd.producto_id = p.id WHERE vd.venta_id = ?");
-    $stmt->execute([$v['id']]);
-    $productos = $stmt->fetchAll();
-    $productos_str = implode(", ", array_map(function($item) {
-        return $item['nombre'] . " x" . $item['cantidad'];
-    }, $productos));
-    
-    echo "<tr>";
-    echo "<td>{$v['id']}</td>";
-    echo "<td>{$v['fecha_venta']}</td>";
-    echo "<td>{$v['sucursal_nombre']}</td>";
-    echo "<td>" . ($v['cliente_nombre'] ?? 'Mostrador') . "</td>";
-    echo "<td>$productos_str</td>";
-    echo "<td>" . number_format($v['total'], 2) . "</td>";
-    
-    // Método de pago
-    $stmt = $pdo->prepare("SELECT mp.nombre FROM venta_pagos vp JOIN metodos_pago mp ON vp.metodo_pago_id = mp.id WHERE vp.venta_id = ?");
-    $stmt->execute([$v['id']]);
-    $pagos = $stmt->fetchAll();
-    echo "<td>" . implode(", ", array_column($pagos, 'nombre')) . "</td>";
-    echo "</tr>";
+// Construir consulta
+$sql = "
+    SELECT 
+        v.fecha_venta,
+        v.id AS nro_venta,
+        CASE 
+            WHEN v.estado = 1 THEN 'ACTIVA'
+            WHEN v.estado = 0 THEN 'ANULADA'
+            ELSE 'DESCONOCIDO'
+        END AS estado_venta,
+        s.nombre AS sucursal,
+        u.nombre AS usuario,
+        IFNULL(c.nombre, 'Cliente Ocasional') AS cliente,
+        p.id AS sku,
+        p.nombre AS nombre_producto,
+        vd.cantidad,
+        vd.precio_unitario,
+        vd.descuento_linea,
+        vd.subtotal_linea,
+        v.moneda
+    FROM ventas v
+    INNER JOIN venta_detalle vd ON v.id = vd.venta_id
+    INNER JOIN productos p ON vd.producto_id = p.id
+    LEFT JOIN sucursales s ON v.sucursal_id = s.id
+    LEFT JOIN usuarios u ON v.usuario_id = u.id
+    LEFT JOIN clientes c ON v.cliente_id = c.id
+    WHERE DATE(v.fecha_venta) BETWEEN :fecha_inicio AND :fecha_fin
+      AND v.sucursal_id = :sucursal_id
+";
+
+$params = [
+    ':fecha_inicio' => $fecha_inicio,
+    ':fecha_fin' => $fecha_fin,
+    ':sucursal_id' => $sucursal_id
+];
+
+if (!empty($usuario_id)) {
+    $sql .= " AND v.usuario_id = :usuario_id";
+    $params[':usuario_id'] = $usuario_id;
 }
-echo "</table>";
+
+if (!empty($cliente_id)) {
+    $sql .= " AND v.cliente_id = :cliente_id";
+    $params[':cliente_id'] = $cliente_id;
+}
+
+if (!empty($producto_id)) {
+    $sql .= " AND vd.producto_id = :producto_id";
+    $params[':producto_id'] = $producto_id;
+}
+
+if ($estado_venta !== '') {
+    $sql .= " AND v.estado = :estado_venta";
+    $params[':estado_venta'] = $estado_venta;
+}
+
+$sql .= " ORDER BY v.fecha_venta DESC";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+$ventas = $stmt->fetchAll();
+
+// Headers para Excel
+header('Content-Type: application/vnd.ms-excel');
+header('Content-Disposition: attachment; filename="reporte_detalle_' . date('Y-m-d_H-i') . '.xls"');
+header('Cache-Control: max-age=0');
+header('Pragma: public');
+
+echo '<table border="1">';
+echo '<thead>';
+echo '<tr>';
+echo '<th>Fecha Venta</th>';
+echo '<th>N° Venta</th>';
+echo '<th>Estado</th>';
+echo '<th>Sucursal</th>';
+echo '<th>Vendedor</th>';
+echo '<th>Cliente</th>';
+echo '<th>SKU</th>';
+echo '<th>Producto</th>';
+echo '<th>Cantidad</th>';
+echo '<th>Precio Unitario</th>';
+echo '<th>Descuento Línea</th>';
+echo '<th>Subtotal Línea</th>';
+echo '<th>Moneda</th>';
+echo '</tr>';
+echo '</thead>';
+echo '<tbody>';
+
+foreach ($ventas as $v) {
+    echo '<tr>';
+    echo '<td>' . date('d/m/Y H:i', strtotime($v['fecha_venta'])) . '</td>';
+    echo '<td>' . str_pad($v['nro_venta'], 6, '0', STR_PAD_LEFT) . '</td>';
+    echo '<td>' . $v['estado_venta'] . '</td>';
+    echo '<td>' . htmlspecialchars($v['sucursal'] ?? '') . '</td>';
+    echo '<td>' . htmlspecialchars($v['usuario'] ?? '') . '</td>';
+    echo '<td>' . htmlspecialchars($v['cliente']) . '</td>';
+    echo '<td>' . $v['sku'] . '</td>';
+    echo '<td>' . htmlspecialchars($v['nombre_producto']) . '</td>';
+    echo '<td>' . $v['cantidad'] . '</td>';
+    echo '<td>' . number_format($v['precio_unitario'], 2) . '</td>';
+    echo '<td>' . number_format($v['descuento_linea'], 2) . '</td>';
+    echo '<td>' . number_format($v['subtotal_linea'], 2) . '</td>';
+    echo '<td>' . $v['moneda'] . '</td>';
+    echo '</tr>';
+}
+
+echo '</tbody>';
+echo '</table>';
+exit;
 ?>

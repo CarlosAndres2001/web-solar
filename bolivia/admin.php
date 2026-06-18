@@ -22,6 +22,9 @@ $menu_items = [];
 if($user_rol == 'admin') {
     $menu_items = [
         ['mod' => 'dashboard', 'icono' => '📊', 'nombre' => 'Dashboard'],
+        ['mod' => 'reporte_ventas', 'icono' => '📊', 'nombre' => 'Reporte Ventas'],
+        ['mod' => 'reporte_detalle', 'icono' => '📋', 'nombre' => 'Reporte Detalle'],
+        ['mod' => 'reporte_por_producto', 'icono' => '🍗', 'nombre' => 'Ventas por Producto'],
         ['mod' => 'cajas', 'icono' => '💰', 'nombre' => 'Panel Cajas'],
         ['mod' => 'ventas', 'icono' => '🛒', 'nombre' => 'Ventas'],
         ['mod' => 'productos', 'icono' => '🍗', 'nombre' => 'Productos'],
@@ -30,12 +33,13 @@ if($user_rol == 'admin') {
         ['mod' => 'metodos_pago', 'icono' => '💳', 'nombre' => 'Métodos de Pago'],
         ['mod' => 'sucursales', 'icono' => '📍', 'nombre' => 'Sucursales'],
         ['mod' => 'usuarios', 'icono' => '👤', 'nombre' => 'Usuarios'],
-        ['mod' => 'logs', 'icono' => '📜', 'nombre' => 'Logs de Actividad']
+       
     ];
 } else {
     // EDITOR (vendedor) - SOLO ve lo necesario
     $menu_items = [
         ['mod' => 'ventas', 'icono' => '🛒', 'nombre' => 'Ventas'],
+        ['mod' => 'clientes', 'icono' => '👥', 'nombre' => 'Clientes'],
         ['mod' => 'mis_cajas', 'icono' => '📋', 'nombre' => 'Cajas Disponibles']
     ];
 }
@@ -48,15 +52,17 @@ $archivo_modulo = "modulos/" . $modulo . ".php";
 $permisos_modulos = [
     // Solo ADMIN
     'dashboard' => ['admin'],
+    'reporte_ventas' => ['admin'],
     'productos' => ['admin'],
     'categorias' => ['admin'],
-    'clientes' => ['admin'],
     'metodos_pago' => ['admin'],
     'sucursales' => ['admin'],
     'usuarios' => ['admin'],
     'logs' => ['admin'],
     'cajas' => ['admin'],
+    'reporte_detalle' => ['admin', 'editor'],
     // ADMIN y EDITOR
+    'clientes' => ['admin','editor'],
     'ventas' => ['admin', 'editor'],
     'mis_cajas' => ['admin', 'editor'],
     'cerrar_caja' => ['admin', 'editor']
