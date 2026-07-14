@@ -3,9 +3,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- NO DECLARES registrarLog() AQUÍ, YA ESTÁ EN config.php ---
-
-// --- FUNCIONES AUXILIARES ---
 function generarCodigoUnico($longitud = 6) {
     $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     $codigo = '';
@@ -15,7 +12,7 @@ function generarCodigoUnico($longitud = 6) {
     return $codigo;
 }
 
-function generarCodigosMasivos($cantidad, $longitud = 12) {
+function generarCodigosMasivos($cantidad, $longitud = 6) {
     $codigos = [];
     for ($i = 0; $i < $cantidad; $i++) {
         $codigos[] = generarCodigoUnico($longitud);
