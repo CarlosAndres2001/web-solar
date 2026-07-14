@@ -31,17 +31,21 @@ if($user_rol == 'admin') {
         ['mod' => 'categorias', 'icono' => '📂', 'nombre' => 'Categorías'],
         ['mod' => 'popups', 'icono' => '👨‍💼', 'nombre' => 'Pop-ups'],
         ['mod' => 'clientes', 'icono' => '👥', 'nombre' => 'Clientes'],
+        ['mod' => 'cupones', 'icono' => '📝', 'nombre' => 'Cupones'],
+        ['mod' => 'cupones_canjeados', 'icono' => '📝', 'nombre' => 'Cupones Cajeados'],
         ['mod' => 'metodos_pago', 'icono' => '💳', 'nombre' => 'Métodos de Pago'],
         ['mod' => 'sucursales', 'icono' => '📍', 'nombre' => 'Sucursales'],
         ['mod' => 'usuarios', 'icono' => '👤', 'nombre' => 'Usuarios'],
-       
+        ['mod' => 'logs', 'icono' => '📝', 'nombre' => 'Logs'],
+        
     ];
 } else {
     // EDITOR (vendedor) - SOLO ve lo necesario
     $menu_items = [
         ['mod' => 'ventas', 'icono' => '🛒', 'nombre' => 'Ventas'],
         ['mod' => 'clientes', 'icono' => '👥', 'nombre' => 'Clientes'],
-        ['mod' => 'mis_cajas', 'icono' => '📋', 'nombre' => 'Cajas Disponibles']
+        ['mod' => 'mis_cajas', 'icono' => '📋', 'nombre' => 'Cajas Disponibles'],
+        ['mod' => 'cupones_canjeados', 'icono' => '📝', 'nombre' => 'Cupones Cajeados'],
     ];
 }
 
@@ -62,6 +66,8 @@ $permisos_modulos = [
     'logs' => ['admin'],
     'cajas' => ['admin'],
     'reporte_detalle' => ['admin', 'editor'],
+    'cupones' => ['admin', 'editor'],
+    'cupones_cajeados' => ['admin', 'editor'],
     // ADMIN y EDITOR
     'clientes' => ['admin','editor'],
     'ventas' => ['admin', 'editor'],
