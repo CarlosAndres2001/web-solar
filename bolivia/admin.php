@@ -25,6 +25,7 @@ if($user_rol == 'admin') {
         ['mod' => 'reporte_ventas', 'icono' => '📊', 'nombre' => 'Reporte Ventas'],
         ['mod' => 'reporte_detalle', 'icono' => '📋', 'nombre' => 'Reporte Detalle'],
         ['mod' => 'reporte_por_producto', 'icono' => '🍗', 'nombre' => 'Ventas por Producto'],
+        ['mod' => 'reporte_canjes', 'icono' => '🔄', 'nombre' => 'Reporte de Canjes '],
         ['mod' => 'cajas', 'icono' => '💰', 'nombre' => 'Panel Cajas'],
         ['mod' => 'ventas', 'icono' => '🛒', 'nombre' => 'Ventas'],
         ['mod' => 'productos', 'icono' => '🍗', 'nombre' => 'Productos'],
@@ -68,6 +69,7 @@ $permisos_modulos = [
     'reporte_detalle' => ['admin', 'editor'],
     'cupones' => ['admin', 'editor'],
     'cupones_cajeados' => ['admin', 'editor'],
+    'reporte_canjes' => ['admin', 'editor'],
     // ADMIN y EDITOR
     'clientes' => ['admin','editor'],
     'ventas' => ['admin', 'editor'],

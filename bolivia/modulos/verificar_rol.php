@@ -26,7 +26,9 @@ $permisos = [
     'metodos_pago' => ['admin', 'editor'],
     'reportes' => ['admin', 'editor'],
     'mis_cajas' => ['admin', 'editor'],
-    'cerrar_caja' => ['admin', 'editor']
+    'cerrar_caja' => ['admin', 'editor'],
+    'cupones' => ['admin', 'editor'],
+    'cupones_canjeados' => ['admin', 'editor']
 ];
 
 $modulo_actual = $_GET['mod'] ?? 'dashboard';
